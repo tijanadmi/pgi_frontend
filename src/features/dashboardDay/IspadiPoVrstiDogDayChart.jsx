@@ -63,17 +63,17 @@ const startDataLight = [
   {
     duration: "Smetnja",
     value: 0,
-    color: "#3b82f6",
+    color: "#0ea5e9",
   },
   {
     duration: "Potencijalni kvar",
     value: 0,
-    color: "#a855f7",
+    color: "#06b6d4",
   },
   {
     duration: "Konzum u mraku",
     value: 0,
-    color: "#a855f7",
+    color: "#3b82f6",
   },
   {
     duration: "Traj. kvar",
@@ -83,12 +83,12 @@ const startDataLight = [
   {
     duration: "Ostalo",
     value: 0,
-    color: "#a855f7",
+    color: "#06b6d4",
   },
   {
     duration: "Prekid isporuke",
     value: 0,
-    color: "#a855f7",
+    color: "#facc15",
   },
 ];
 
@@ -126,17 +126,17 @@ const startDataDark = [
   {
     duration: "Smetnja",
     value: 0,
-    color: "#1d4ed8",
+    color: "#0369a1",
   },
   {
     duration: "Potencijalni kvar",
     value: 0,
-    color: "#7e22ce",
+    color: "#0e7490",
   },
   {
     duration: "Konzum u mraku",
     value: 0,
-    color: "#7e22ce",
+    color: "#1d4ed8",
   },
   {
     duration: "Traj. kvar",
@@ -146,14 +146,15 @@ const startDataDark = [
   {
     duration: "Ostalo",
     value: 0,
-    color: "#7e22ce",
+    color: "#0e7490",
   },
   {
     duration: "Prekid isporuke",
     value: 0,
-    color: "#7e22ce",
+    color: "#ca8a04",
   },
 ];
+
 
 function prepareData(startData, dogadjaji) {
   // A bit ugly code, but sometimes this is what it takes when working with real data 😅
@@ -168,7 +169,6 @@ function prepareData(startData, dogadjaji) {
     .reduce((arr, cur) => {
       const num = cur.vrpd;
       if (num === "1") return incArrayValue(arr, "APU Uspešno");
-      if (num === "87") return incArrayValue(arr, "Prekid isporuke");
       if (num === "3") return incArrayValue(arr, "Prol. kvar");
       if (num === "4") return incArrayValue(arr, "Uzas .kvar");
       if (num === "47") return incArrayValue(arr, "Ispad");
@@ -179,6 +179,7 @@ function prepareData(startData, dogadjaji) {
       if (num === "84") return incArrayValue(arr, "Konzum u mraku");
       if (num === "10") return incArrayValue(arr, "Traj. kvar");
       if (num === "9") return incArrayValue(arr, "Ostalo");
+      if (num === "87") return incArrayValue(arr, "Prekid isporuke");
       return arr;
     }, startData)
     .filter((obj) => obj.value > 0);

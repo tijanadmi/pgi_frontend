@@ -23,7 +23,7 @@ const Opis = styled.div`
   gap: 0.2rem;
   color: var(--color-grey-500);
   font-size: 1.2rem;
-  margin-left: 20px; /* Dodaje levi margin */
+  margin-left: 10px; /* Dodaje levi margin */
   border-bottom: 1px solid var(--color-grey-300); /* Dodaje crtu ispod */
   padding-bottom: 4px; /* Razmak između teksta i crte */
 `;
