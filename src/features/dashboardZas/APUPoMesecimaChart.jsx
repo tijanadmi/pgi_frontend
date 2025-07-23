@@ -159,27 +159,27 @@ function APUPoMesecimaChart({ dogadjaji, godina }) {
     ? {
         text: "#e5e7eb",
         background: "#18212f",
-        "400": "#facc15",
-        "220": "#4f46e5",
-        "110": "#10b981",
-        "400_n": "#fde047",
-        "220_n": "#818cf8",
-        "110_n": "#34d399",
+        "400": "#ef4444",        // crvena
+        "220": "#10b981",        // zelena
+        "110": "#3b82f6",        // plava
+        "400_n": "#f87171",      // svetlo crvena
+        "220_n": "#6ee7b7",      // svetlo zelena
+        "110_n": "#93c5fd",      // svetlo plava
       }
     : {
         text: "#374151",
         background: "#fff",
-        "400": "#ca8a04",
-        "220": "#6366f1",
-        "110": "#059669",
-        "400_n": "#fef08a",
-        "220_n": "#a5b4fc",
-        "110_n": "#6ee7b7",
+        "400": "#b91c1c",        // tamno crvena
+        "220": "#065f46",        // tamno zelena
+        "110": "#1d4ed8",        // tamno plava
+        "400_n": "#fca5a5",      // svetlo crvena
+        "220_n": "#a7f3d0",      // svetlo zelena
+        "110_n": "#bfdbfe",      // svetlo plava
       };
 
   const meseci = [
-    "ЈАН", "ФЕБ", "МАР", "АПР", "МАЈ", "ЈУН",
-    "ЈУЛ", "АВГ", "СЕП", "ОКТ", "НОВ", "ДЕЦ"
+    "Јануар", "Фебруар", "Март", "Април", "Мај", "Јун",
+    "Јул", "Август", "Септембар", "Октобар", "Новембар", "Децембар"
   ];
 
   const data = meseci.map((mesec, index) => {
@@ -226,14 +226,14 @@ function APUPoMesecimaChart({ dogadjaji, godina }) {
           <Legend />
 
           {/* Uspešni APU */}
-          <Line type="monotone" dataKey="400" stroke={colors["400"]} strokeWidth={2} name="400 kV APU" />
-          <Line type="monotone" dataKey="220" stroke={colors["220"]} strokeWidth={2} name="220 kV APU" />
-          <Line type="monotone" dataKey="110" stroke={colors["110"]} strokeWidth={2} name="110 kV APU" />
+          <Line type="monotone" dataKey="400" stroke={colors["400"]} strokeWidth={2} name="400 kV АПУ успешно" />
+          <Line type="monotone" dataKey="220" stroke={colors["220"]} strokeWidth={2} name="220 kV АПУ успешно" />
+          <Line type="monotone" dataKey="110" stroke={colors["110"]} strokeWidth={2} name="110 kV АПУ успешно" />
 
           {/* Neuspešni APU */}
-          <Line type="monotone" dataKey="400_n" stroke={colors["400_n"]} strokeWidth={1.5} strokeDasharray="5 5" name="400 kV APU N" />
-          <Line type="monotone" dataKey="220_n" stroke={colors["220_n"]} strokeWidth={1.5} strokeDasharray="5 5" name="220 kV APU N" />
-          <Line type="monotone" dataKey="110_n" stroke={colors["110_n"]} strokeWidth={1.5} strokeDasharray="5 5" name="110 kV APU N" />
+          <Line type="monotone" dataKey="400_n" stroke={colors["400_n"]} strokeWidth={1.5} strokeDasharray="5 5" name="400 kV АПУ неуспешно" />
+          <Line type="monotone" dataKey="220_n" stroke={colors["220_n"]} strokeWidth={1.5} strokeDasharray="5 5" name="220 kV АПУ неуспешно" />
+          <Line type="monotone" dataKey="110_n" stroke={colors["110_n"]} strokeWidth={1.5} strokeDasharray="5 5" name="110 kV АПУ неуспешно" />
         </LineChart>
       </ResponsiveContainer>
     </StyledChart>

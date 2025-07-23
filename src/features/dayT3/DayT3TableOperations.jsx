@@ -2,7 +2,7 @@ import Filter from "../../ui/Filter";
 import DaySelect from "../../ui/DaySelect";
 import MrcSelect from "../../features/lovs/MrcSelect";
 import TableOperations from "../../ui/TableOperations";
-import ButtonText from "../../ui/ButtonText";
+// import ButtonText from "../../ui/ButtonText";
 import { useMoveBack } from "../../hooks/useMoveBack";
 
 function DayT3TableOperation() {
@@ -24,7 +24,7 @@ function DayT3TableOperation() {
         />
         <MrcSelect />
         <DaySelect />
-        <ButtonText onClick={moveBack}>&larr; Изађи</ButtonText>
+        {/* <ButtonText onClick={moveBack}>&larr; Изађи</ButtonText> */}
       </TableOperations>
     </>
   );

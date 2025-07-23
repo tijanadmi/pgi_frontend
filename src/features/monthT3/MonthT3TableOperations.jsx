@@ -2,7 +2,7 @@ import Filter from "../../ui/Filter";
 import YearSelect from "../../ui/YearSelect";
 import MonthSelect from "../../ui/MonthSelect";
 import TableOperations from "../../ui/TableOperations";
-import ButtonText from "../../ui/ButtonText";
+// import ButtonText from "../../ui/ButtonText";
 import { useMoveBack } from "../../hooks/useMoveBack";
 
 function MonthT3TableOperation() {
@@ -24,7 +24,7 @@ function MonthT3TableOperation() {
         />
         <MonthSelect />
         <YearSelect></YearSelect>
-        <ButtonText onClick={moveBack}>&larr; Изађи</ButtonText>
+        {/* <ButtonText onClick={moveBack}>&larr; Изађи</ButtonText> */}
       </TableOperations>
     </>
   );
