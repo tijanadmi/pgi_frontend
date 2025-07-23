@@ -1,9 +1,17 @@
+// import {
+//   HiOutlineBanknotes,
+//   HiOutlineBriefcase,
+//   HiOutlineCalendarDays,
+//   HiOutlineChartBar,
+// } from "react-icons/hi2";
+
 import {
-  HiOutlineBanknotes,
-  HiOutlineBriefcase,
-  HiOutlineCalendarDays,
-  HiOutlineChartBar,
-} from "react-icons/hi2";
+  MdFlashOn,
+  MdPowerSettingsNew,
+  MdReportProblem,
+  MdSyncProblem
+} from "react-icons/md";
+
 import PropTypes from "prop-types";
 import Stat from "./Stat";
 // import { formatCurrency } from "../../utils/helpers";
@@ -26,25 +34,25 @@ function Stats({ t1, t2, t3, t4 }) {
       <Stat
         title="Испади/кварови"
         color="blue"
-        icon={<HiOutlineBriefcase />}
+        icon={<MdFlashOn />}
         value={numT1}
       />
       <Stat
         title="Искључења/укључења"
         color="green"
-        icon={<HiOutlineBanknotes />}
+        icon={<MdPowerSettingsNew />}
         value={numT2}
       />
       <Stat
         title="Дужи кварови"
         color="indigo"
-        icon={<HiOutlineCalendarDays />}
+        icon={<MdReportProblem />}
         value={numT3}
       />
       <Stat
         title="Проблематика пог.мреже"
         color="yellow"
-        icon={<HiOutlineChartBar />}
+        icon={<MdSyncProblem />}
         value={numT4}
       />
     </>

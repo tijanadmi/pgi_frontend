@@ -105,9 +105,9 @@ function DayT1Table() {
           )}
         />
 
-        <Table.Footer>
+        {/* <Table.Footer>
           <Pagination count={count} />
-        </Table.Footer>
+        </Table.Footer> */}
       </Table>
     </Menus>
   );

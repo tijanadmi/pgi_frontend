@@ -64,9 +64,9 @@ function MonthT3Row({
   return (
     <Table.Row>
       {/* <Room>{ob_opis}</Room> */}
-      <Stacked>
+      {/* <Stacked>
         <span>{stav}</span>
-      </Stacked>
+      </Stacked> */}
       <Stacked>
         <span>{id}</span>
       </Stacked>

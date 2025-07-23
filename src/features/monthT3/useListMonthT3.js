@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useSearchParams } from "react-router-dom";
-import { getT3ForMonthForPagination } from "../../services/apiMM";
+import { getT3ForMonthFilter } from "../../services/apiMM";
 
 export function useListMonthT3() {
   const [searchParams] = useSearchParams();
@@ -24,8 +24,6 @@ export function useListMonthT3() {
     }
   }
 
-  // PAGINATION
-  const page = !searchParams.get("page") ? 1 : Number(searchParams.get("page"));
 
   // QUERY
   const {
@@ -33,8 +31,8 @@ export function useListMonthT3() {
     data: { data: dogadjaji, count } = { data: [], count: 0 }, // Podrazumevane vrednosti
     error,
   } = useQuery({
-    queryKey: ["dogadjaji", month, year, page, filter],
-    queryFn: () => getT3ForMonthForPagination(month, year, page, filter),
+    queryKey: ["dogadjaji", month, year, filter],
+    queryFn: () => getT3ForMonthFilter(month, year, filter),
   });
 
   // console.log("reservations", reservations)

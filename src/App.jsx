@@ -30,7 +30,15 @@ import DayT1 from "./pages/DayT1.jsx";
 import DayT2 from "./pages/DayT2.jsx";
 import DayT3 from "./pages/DayT3.jsx";
 import DayT4 from "./pages/DayT4.jsx";
+
+import PIT1 from "./pages/PIT1.jsx";
+import PIT2 from "./pages/PIT2.jsx";
+import PIT3 from "./pages/PIT3.jsx";
+import PIT4 from "./pages/PIT4.jsx";
+
 import DashboardDay from "./pages/DashboardDay.jsx";
+import DashboardPI from "./pages/DashboardPI.jsx";
+import DashboardZastita from "./pages/DashboardZastita.jsx";
 
 // Create a client
 const queryClient = new QueryClient({
@@ -59,6 +67,8 @@ function App() {
               <Route index element={<Navigate replace to="dashboard" />} />
               <Route path="dashboard" element={<Dashboard />} />
               <Route path="dashboardday" element={<DashboardDay />} />
+              <Route path="dashboardpogonski" element={<DashboardPI />} />
+              <Route path="dashboardzastita" element={<DashboardZastita />} />
               <Route path="bookings/:reservationId" element={<Booking />} />
               <Route path="checkin/:reservationId" element={<Checkin />} />
               <Route path="mesecni/t1" element={<MonthT1 />} />
@@ -70,6 +80,11 @@ function App() {
               <Route path="dnevni/t2" element={<DayT2 />} />
               <Route path="dnevni/t3" element={<DayT3 />} />
               <Route path="dnevni/t4" element={<DayT4 />} />
+
+              <Route path="pogonski/t1" element={<PIT1 />} />
+              <Route path="pogonski/t2" element={<PIT2 />} />
+              <Route path="pogonski/t3" element={<PIT3 />} />
+              <Route path="pogonski/t4" element={<PIT4 />} />
 
               <Route path="prekidk" element={<DDNInterruptionOfDeliveryK />} />
               <Route path="prekidip" element={<DDNInterruptionOfDeliveryP />} />

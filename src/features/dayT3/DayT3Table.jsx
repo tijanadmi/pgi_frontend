@@ -101,9 +101,9 @@ function DayT3Table() {
           )}
         />
 
-        <Table.Footer>
+        {/* <Table.Footer>
           <Pagination count={count} />
-        </Table.Footer>
+        </Table.Footer> */}
       </Table>
     </Menus>
   );

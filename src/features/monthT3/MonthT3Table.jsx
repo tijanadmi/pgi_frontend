@@ -52,12 +52,12 @@ function MonthT3Table() {
 
   return (
     <Menus>
-      <Table columns="0.3fr 0.3fr 0.3fr 0.3fr 1fr 1.6fr 1fr 2.5fr 2.5fr 1.2fr 1.2fr">
+      <Table columns=" 0.3fr 0.3fr 0.3fr 1fr 1.6fr 1fr 2.5fr 2.5fr 1.2fr 1.2fr">
         <Table.Header>
-          <StackedH>
+          {/* <StackedH>
             <span>Из</span>
             <span>бор</span>
-          </StackedH>
+          </StackedH> */}
           <StackedH>
             <span>Ред</span>
             <span>бр</span>
@@ -110,9 +110,9 @@ function MonthT3Table() {
           )}
         />
 
-        <Table.Footer>
+        {/* <Table.Footer>
           <Pagination count={count} />
-        </Table.Footer>
+        </Table.Footer> */}
       </Table>
     </Menus>
   );

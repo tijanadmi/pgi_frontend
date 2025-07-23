@@ -12,7 +12,7 @@ export async function getT1ForMonth(month, year) {
 
   // console.log(firstDay, lastDay);
   try {
-    const url = `${API_URL}/mesecni?start_date=${firstDay}&end_date=${lastDay}&tipd=1`;
+    const url = `${API_URL}/mesecni?start_date=${firstDay}&end_date=${lastDay}&tipd=1&fup=all`;
     const res = await fetch(url, {
       method: "GET",
       headers: {
@@ -110,6 +110,61 @@ export async function getT1ForMonthForPagination(month, year, page, filter) {
   }
 }
 
+// Vraca sve ispade/kvarove za izabrani mesec u godini - mesecni bez paginacije
+export async function getT1ForMonthFilter(month, year, filter) {
+  //   const token = getAuthToken();
+
+  if (!filter) {
+    filter = "all";
+  }
+
+
+  const { firstDay, lastDay } = getMonthStartEnd(month, year);
+
+  // console.log(firstDay, lastDay);
+  try {
+    const url = `${API_URL}/mesecni?start_date=${firstDay}&end_date=${lastDay}&tipd=1&fup=${filter}`;
+    // console.log(url);
+    const res = await fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        // Authorization: "Bearer " + token,
+      },
+    });
+
+    if (!res.ok) {
+      throw new Error("Failed getting all reservations after date");
+    }
+
+    // Parsirajte JSON odgovor
+    const jsonResponse = await res.json();
+
+    // Ako je odgovor prazan objekat {}, vrati prazan niz []
+    if (!jsonResponse || Object.keys(jsonResponse).length === 0) {
+      return {
+        data: [],
+        count: 0,
+      };
+    }
+
+    // Proverite da li postoji polje "prekidik" i "total"
+    const dogadjaji = jsonResponse.dogadjaji || []; // Ako nema rezervacija, postavi praznu listu
+    const total = jsonResponse.total ? parseInt(jsonResponse.total, 10) : 0;
+
+    // Vratite rezultat kao objekat
+    return {
+      data: dogadjaji,
+      count: total, // Osiguranje da je broj
+    };
+  } catch (error) {
+    // console.log("catch")
+    console.error("Error fetching ispade i kvarove:", error.message);
+    throw error;
+  }
+}
+
+
 // Vraca sva iskljucenja za izabrani mesec u godini - mesecni
 export async function getT2ForMonthForPagination(month, year, page, filter) {
   if (!filter) {
@@ -164,6 +219,61 @@ export async function getT2ForMonthForPagination(month, year, page, filter) {
     throw error;
   }
 }
+
+// Vraca sva iskljucenja/ukljucenja za izabrani mesec u godini - mesecni bez paginacije
+export async function getT2ForMonthFilter(month, year, filter) {
+  //   const token = getAuthToken();
+
+  if (!filter) {
+    filter = "all";
+  }
+
+
+  const { firstDay, lastDay } = getMonthStartEnd(month, year);
+
+  // console.log(firstDay, lastDay);
+  try {
+    const url = `${API_URL}/mesecni?start_date=${firstDay}&end_date=${lastDay}&tipd=2&fup=${filter}`;
+    // console.log(url);
+    const res = await fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        // Authorization: "Bearer " + token,
+      },
+    });
+
+    if (!res.ok) {
+      throw new Error("Failed getting all reservations after date");
+    }
+
+    // Parsirajte JSON odgovor
+    const jsonResponse = await res.json();
+
+    // Ako je odgovor prazan objekat {}, vrati prazan niz []
+    if (!jsonResponse || Object.keys(jsonResponse).length === 0) {
+      return {
+        data: [],
+        count: 0,
+      };
+    }
+
+    // Proverite da li postoji polje "prekidik" i "total"
+    const dogadjaji = jsonResponse.dogadjaji || []; // Ako nema rezervacija, postavi praznu listu
+    const total = jsonResponse.total ? parseInt(jsonResponse.total, 10) : 0;
+
+    // Vratite rezultat kao objekat
+    return {
+      data: dogadjaji,
+      count: total, // Osiguranje da je broj
+    };
+  } catch (error) {
+    // console.log("catch")
+    console.error("Error fetching ispade i kvarove:", error.message);
+    throw error;
+  }
+}
+
 
 // Vraca sve duze ispade/kvarove za izabrani mesec u godini - mesecni
 export async function getT3ForMonthForPagination(month, year, page, filter) {
@@ -220,6 +330,61 @@ export async function getT3ForMonthForPagination(month, year, page, filter) {
   }
 }
 
+// Vraca sve duze kvarove za izabrani mesec u godini - mesecni bez paginacije
+export async function getT3ForMonthFilter(month, year, filter) {
+  //   const token = getAuthToken();
+
+  if (!filter) {
+    filter = "all";
+  }
+
+
+  const { firstDay, lastDay } = getMonthStartEnd(month, year);
+
+  // console.log(firstDay, lastDay);
+  try {
+    const url = `${API_URL}/mesecni?start_date=${firstDay}&end_date=${lastDay}&tipd=3&fup=${filter}`;
+    // console.log(url);
+    const res = await fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        // Authorization: "Bearer " + token,
+      },
+    });
+
+    if (!res.ok) {
+      throw new Error("Failed getting all reservations after date");
+    }
+
+    // Parsirajte JSON odgovor
+    const jsonResponse = await res.json();
+
+    // Ako je odgovor prazan objekat {}, vrati prazan niz []
+    if (!jsonResponse || Object.keys(jsonResponse).length === 0) {
+      return {
+        data: [],
+        count: 0,
+      };
+    }
+
+    // Proverite da li postoji polje "prekidik" i "total"
+    const dogadjaji = jsonResponse.dogadjaji || []; // Ako nema rezervacija, postavi praznu listu
+    const total = jsonResponse.total ? parseInt(jsonResponse.total, 10) : 0;
+
+    // Vratite rezultat kao objekat
+    return {
+      data: dogadjaji,
+      count: total, // Osiguranje da je broj
+    };
+  } catch (error) {
+    // console.log("catch")
+    console.error("Error fetching ispade i kvarove:", error.message);
+    throw error;
+  }
+}
+
+
 // Vraca sve duze ispade/kvarove za izabrani mesec u godini - mesecni
 export async function getT4ForMonthForPagination(month, year, page) {
   if (!page) {
@@ -231,6 +396,53 @@ export async function getT4ForMonthForPagination(month, year, page) {
   // console.log(firstDay, lastDay);
   try {
     const url = `${API_URL}/mesecnit4p?start_date=${firstDay}&end_date=${lastDay}&tipd=3&page_size=${PAGE_SIZE}&page_id=${page}`;
+    const res = await fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        // Authorization: "Bearer " + token,
+      },
+    });
+
+    if (!res.ok) {
+      throw new Error("Failed getting all duze ispade/kvarove");
+    }
+
+    // Parsirajte JSON odgovor
+    const jsonResponse = await res.json();
+
+    // Ako je odgovor prazan objekat {}, vrati prazan niz []
+    if (!jsonResponse || Object.keys(jsonResponse).length === 0) {
+      return {
+        data: [],
+        count: 0,
+      };
+    }
+
+    // Proverite da li postoji polje "prekidik" i "total"
+    const dogadjaji = jsonResponse.dogadjaji || []; // Ako nema rezervacija, postavi praznu listu
+    const total = jsonResponse.total ? parseInt(jsonResponse.total, 10) : 0;
+
+    // Vratite rezultat kao objekat
+    return {
+      data: dogadjaji,
+      count: total, // Osiguranje da je broj
+    };
+  } catch (error) {
+    // console.log("catch")
+    console.error("Error fetching duze ispade/kvarove:", error.message);
+    throw error;
+  }
+}
+
+// Vraca sve problematike mreze za izabrani mesec u godini bez paginacije- mesecni
+export async function getT4ForMonthFilter(month, year) {
+
+  const { firstDay, lastDay } = getMonthStartEnd(month, year);
+
+  // console.log(firstDay, lastDay);
+  try {
+    const url = `${API_URL}/mesecnit4?start_date=${firstDay}&end_date=${lastDay}&tipd=3`;
     const res = await fetch(url, {
       method: "GET",
       headers: {

@@ -8,6 +8,17 @@ import {
   HiOutlineUsers,
 } from "react-icons/hi2";
 
+import { 
+  MdCalendarMonth,
+  MdToday,
+  MdSyncProblem,
+  MdPowerOff,
+  MdSecurity
+ } from "react-icons/md";
+
+import { FaUserSlash } from "react-icons/fa";
+
+
 const NavList = styled.ul`
   display: flex;
   flex-direction: column;
@@ -59,14 +70,20 @@ function MainNav() {
       <NavList>
         <li>
           <StyledNavLink to="/dashboard">
-            <HiOutlineHome />
-            <span>Почетна</span>
+            <MdCalendarMonth />
+            <span>Месечни извештаји</span>
           </StyledNavLink>
         </li>
         <li>
           <StyledNavLink to="/dashboardday">
-            <HiOutlineCalendarDays />
+            <MdToday />
             <span>Дневни извештаји</span>
+          </StyledNavLink>
+        </li>
+         <li>
+          <StyledNavLink to="/dashboardpogonski">
+            <MdSyncProblem />
+            <span>Погонски извештаји</span>
           </StyledNavLink>
         </li>
         {/* <li>
@@ -77,14 +94,20 @@ function MainNav() {
         </li> */}
         <li>
           <StyledNavLink to="/prekidk">
-            <HiOutlineUsers />
+            <FaUserSlash />
             <span>Прекиди корисника</span>
           </StyledNavLink>
         </li>
         <li>
           <StyledNavLink to="/prekidip">
-            <HiOutlineCog6Tooth />
+            <MdPowerOff />
             <span>Прекиди производње</span>
+          </StyledNavLink>
+        </li>
+         <li>
+          <StyledNavLink to="/dashboardzastita">
+            <MdSecurity />
+            <span>Рад заштите</span>
           </StyledNavLink>
         </li>
       </NavList>

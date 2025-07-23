@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useSearchParams } from "react-router-dom";
-import { getT2ForDayForPagination } from "../../services/apiDD";
+import { getT2ForDayFilter } from "../../services/apiDD";
 
 export function useListDayT2() {
   const [searchParams] = useSearchParams();
@@ -26,17 +26,14 @@ export function useListDayT2() {
   // FILTER
   const filter = searchParams.get("funp");
 
-  // PAGINATION
-  const page = !searchParams.get("page") ? 1 : Number(searchParams.get("page"));
-
   // QUERY
   const {
     isLoading,
     data: { data: dogadjaji, count } = { data: [], count: 0 }, // Podrazumevane vrednosti
     error,
   } = useQuery({
-    queryKey: ["dogadjaji", day, mrcId, page, filter],
-    queryFn: () => getT2ForDayForPagination(day, mrcId, page, filter),
+    queryKey: ["dogadjaji", day, mrcId, filter],
+    queryFn: () => getT2ForDayFilter(day, mrcId, filter),
   });
 
   // console.log("reservations", reservations)

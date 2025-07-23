@@ -48,6 +48,7 @@ function DaySelect({ variant = "white" }) {
       type="date"
       value={defaultDate}
       onChange={handleChange}
+       onKeyDown={(e) => e.preventDefault()} // 🛑 zabrana kucanja
       $variant={variant}
     />
   );
@@ -58,3 +59,4 @@ DaySelect.propTypes = {
 };
 
 export default DaySelect;
+

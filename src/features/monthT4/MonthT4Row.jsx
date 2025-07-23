@@ -47,9 +47,9 @@ function MonthT4Row({ pk: { id: id, stav, datizv, id1, mrc } }) {
   return (
     <Table.Row>
       {/* <Room>{ob_opis}</Room> */}
-      <Stacked>
+      {/* <Stacked>
         <span>{stav}</span>
-      </Stacked>
+      </Stacked> */}
       <Stacked>
         <span>{id}</span>
       </Stacked>
