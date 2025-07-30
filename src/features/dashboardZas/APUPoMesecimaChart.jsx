@@ -162,9 +162,9 @@ function APUPoMesecimaChart({ dogadjaji, godina }) {
         "400": "#ef4444",        // crvena
         "220": "#10b981",        // zelena
         "110": "#3b82f6",        // plava
-        "400_n": "#f87171",      // svetlo crvena
-        "220_n": "#6ee7b7",      // svetlo zelena
-        "110_n": "#93c5fd",      // svetlo plava
+        // "400_n": "#f87171",      // svetlo crvena
+        // "220_n": "#6ee7b7",      // svetlo zelena
+        // "110_n": "#93c5fd",      // svetlo plava
       }
     : {
         text: "#374151",
@@ -172,9 +172,9 @@ function APUPoMesecimaChart({ dogadjaji, godina }) {
         "400": "#b91c1c",        // tamno crvena
         "220": "#065f46",        // tamno zelena
         "110": "#1d4ed8",        // tamno plava
-        "400_n": "#fca5a5",      // svetlo crvena
-        "220_n": "#a7f3d0",      // svetlo zelena
-        "110_n": "#bfdbfe",      // svetlo plava
+        // "400_n": "#fca5a5",      // svetlo crvena
+        // "220_n": "#a7f3d0",      // svetlo zelena
+        // "110_n": "#bfdbfe",      // svetlo plava
       };
 
   const meseci = [
@@ -189,9 +189,9 @@ function APUPoMesecimaChart({ dogadjaji, godina }) {
       "400": 0,
       "220": 0,
       "110": 0,
-      "400_n": 0,
-      "220_n": 0,
-      "110_n": 0,
+      // "400_n": 0,
+      // "220_n": 0,
+      // "110_n": 0,
     };
 
     dogadjaji
@@ -199,7 +199,7 @@ function APUPoMesecimaChart({ dogadjaji, godina }) {
       .forEach((d) => {
         const naponKey = d.napon.toString(); // npr "400"
         poNaponu[naponKey] += d.broj_apu;
-        poNaponu[`${naponKey}_n`] += d.broj_apu_n;
+        // poNaponu[`${naponKey}_n`] += d.broj_apu_n;
       });
 
     return poNaponu;
@@ -207,7 +207,7 @@ function APUPoMesecimaChart({ dogadjaji, godina }) {
 
   return (
     <StyledChart>
-      <Heading as="h2">Број АПУ по месецима за {godina}</Heading>
+      <Heading as="h2">Број АПУ успешно по месецима за {godina}</Heading>
 
       <ResponsiveContainer height={300} width="100%">
         <LineChart data={data}>
@@ -231,9 +231,9 @@ function APUPoMesecimaChart({ dogadjaji, godina }) {
           <Line type="monotone" dataKey="110" stroke={colors["110"]} strokeWidth={2} name="110 kV АПУ успешно" />
 
           {/* Neuspešni APU */}
-          <Line type="monotone" dataKey="400_n" stroke={colors["400_n"]} strokeWidth={1.5} strokeDasharray="5 5" name="400 kV АПУ неуспешно" />
+          {/* <Line type="monotone" dataKey="400_n" stroke={colors["400_n"]} strokeWidth={1.5} strokeDasharray="5 5" name="400 kV АПУ неуспешно" />
           <Line type="monotone" dataKey="220_n" stroke={colors["220_n"]} strokeWidth={1.5} strokeDasharray="5 5" name="220 kV АПУ неуспешно" />
-          <Line type="monotone" dataKey="110_n" stroke={colors["110_n"]} strokeWidth={1.5} strokeDasharray="5 5" name="110 kV АПУ неуспешно" />
+          <Line type="monotone" dataKey="110_n" stroke={colors["110_n"]} strokeWidth={1.5} strokeDasharray="5 5" name="110 kV АПУ неуспешно" /> */}
         </LineChart>
       </ResponsiveContainer>
     </StyledChart>

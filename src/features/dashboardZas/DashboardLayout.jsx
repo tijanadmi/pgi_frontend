@@ -2,9 +2,12 @@ import styled from "styled-components";
 
 import Spinner from "../../ui/Spinner";
 import APUPoMesecimaChart from "./APUPoMesecimaChart";
+import IspadiPoNaponuChart from "./IspadiPoNaponuChart";
+import APUNeuspesnoPoMesecimaChart from "./APUNeuspesnoPoMesecimaChart";
 // import ApuChart from "./ApuChart";
 // import IspadiPoVrstiDogChart from "./IspadiPoVrstiDogChart";
 import { useRadApuMesForYear } from "./useRadApuMesForYear";
+import { useDApuAForYear } from "./useDApuAForYear";
 // import TodayActivity from "../check-in-out/TodayActivity";
 
 // import { useRooms } from "../rooms/useRooms";
@@ -23,14 +26,24 @@ function DashboardLayout() {
     isLoading: isLoading,
     year,
   } = useRadApuMesForYear();
-  // console.log(dogadjaji)
-  if (isLoading ) return <Spinner />;
+
+  const {
+    dataApuA,
+    isLoading: isLoading1,
+    year: year1,
+  } = useDApuAForYear();
+  
+  
+  if (isLoading || isLoading1 ) return <Spinner />;
   
   return (
     <StyledDashboardLayout>
       {/* <ApuChart data={dogadjaji} /> */}
       {/* <IspadiPoVrstiDogChart dogadjaji={dogadjaji} /> */}
       <APUPoMesecimaChart dogadjaji={dogadjaji} godina={year} />
+      <APUNeuspesnoPoMesecimaChart dogadjaji={dogadjaji} godina={year} />
+      {/* <IspadiPoNaponuChart data={dataApuA} godina={year} /> */}
+
     </StyledDashboardLayout>
   );
 }
