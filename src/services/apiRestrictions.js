@@ -9,8 +9,9 @@ export async function getRestrictions() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer " + token,
+        //Authorization: "Bearer " + token,
       },
+      credentials: "include",
     });
 
     if (!res.ok) {
@@ -68,9 +69,10 @@ export async function createEditRestriction(newRestriction, id) {
       method: method,
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer " + token,
+        //Authorization: "Bearer " + token,
       },
       body: JSON.stringify(restrictionData),
+      credentials: "include",
     });
 
     if (!response.ok) {
@@ -106,8 +108,9 @@ export async function deleteRestriction(restrictionId) {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
-          Authorization: "Bearer " + token,
+          //Authorization: "Bearer " + token,
         },
+        credentials: "include",
       }
     );
 

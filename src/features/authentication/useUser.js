@@ -14,7 +14,11 @@ export function useUser() {
   });
 
   // Provera da li korisnik ima rolu "PGI"
+  // const isAuthenticated =
+  //   user?.user_role?.some((role) => role.RoleCode === "PGI") || false;
+
+  // Proveri da li korisnik ima rolu "PGI"
   const isAuthenticated =
-    user?.user_role?.some((role) => role.RoleCode === "PGI") || false;
+    Array.isArray(user?.user_role) && user.user_role.includes("PGI");
   return { isLoading, user, isAuthenticated };
 }

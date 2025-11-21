@@ -1,6 +1,7 @@
 // import { getAuthToken } from "../utils/auth";
 import { PAGE_SIZE } from "../utils/constants";
 import { getMonthStartEnd } from "../utils/helpers";
+import { apiFetch } from "../utils/auth";
 
 const API_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -29,11 +30,18 @@ export async function getListDDNInterruptionOfDeliveryK(
   // console.log(firstDay, lastDay);
   try {
     const url = `${API_URL}/interruptionofusers?start_date=${firstDay}&end_date=${lastDay}&mrc=${mrcId}&page_size=${PAGE_SIZE}&page_id=${page}`;
-    const res = await fetch(url, {
+    /*const res = await fetch(url, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
         // Authorization: "Bearer " + token,
+      },
+      credentials: "include",
+    });*/
+    const res = await apiFetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
       },
     });
 
@@ -91,11 +99,18 @@ export async function getListDDNInterruptionOfDeliveryKExcel(
   // console.log(firstDay, lastDay);
   try {
     const url = `${API_URL}/interruptionofusers_excel?start_date=${firstDay}&end_date=${lastDay}&mrc=${mrcId}`;
-    const res = await fetch(url, {
+    /*const res = await fetch(url, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
         // Authorization: "Bearer " + token,
+      },
+      credentials: "include",
+    });*/
+    const res = await apiFetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
       },
     });
 

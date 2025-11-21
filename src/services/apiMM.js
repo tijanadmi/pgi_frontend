@@ -1,6 +1,7 @@
 // import { getAuthToken } from "../utils/auth";
 import { getMonthStartEnd } from "../utils/helpers";
 import { PAGE_SIZE } from "../utils/constants";
+import { apiFetch } from "../utils/auth";
 
 const API_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -13,13 +14,20 @@ export async function getT1ForMonth(month, year) {
   // console.log(firstDay, lastDay);
   try {
     const url = `${API_URL}/mesecni?start_date=${firstDay}&end_date=${lastDay}&tipd=1&fup=all`;
-    const res = await fetch(url, {
+    /*const res = await fetch(url, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
         // Authorization: "Bearer " + token,
       },
-    });
+      credentials: "include",
+    });*/
+    const res = await apiFetch(url, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
 
     if (!res.ok) {
       throw new Error("Failed getting all reservations after date");
@@ -71,13 +79,20 @@ export async function getT1ForMonthForPagination(month, year, page, filter) {
   try {
     const url = `${API_URL}/mesecnip?start_date=${firstDay}&end_date=${lastDay}&tipd=1&page_size=${PAGE_SIZE}&page_id=${page}&fup=${filter}`;
     // console.log(url);
-    const res = await fetch(url, {
+    /*const res = await fetch(url, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
         // Authorization: "Bearer " + token,
       },
-    });
+      credentials: "include",
+    });*/
+    const res = await apiFetch(url, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
 
     if (!res.ok) {
       throw new Error("Failed getting all reservations after date");
@@ -125,13 +140,20 @@ export async function getT1ForMonthFilter(month, year, filter) {
   try {
     const url = `${API_URL}/mesecni?start_date=${firstDay}&end_date=${lastDay}&tipd=1&fup=${filter}`;
     // console.log(url);
-    const res = await fetch(url, {
+    /*const res = await fetch(url, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
         // Authorization: "Bearer " + token,
       },
-    });
+      credentials: "include",
+    });*/
+    const res = await apiFetch(url, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
 
     if (!res.ok) {
       throw new Error("Failed getting all reservations after date");
@@ -181,13 +203,20 @@ export async function getT2ForMonthForPagination(month, year, page, filter) {
   try {
     const url = `${API_URL}/mesecnip?start_date=${firstDay}&end_date=${lastDay}&tipd=2&page_size=${PAGE_SIZE}&page_id=${page}&fup=${filter}`;
     // console.log(url);
-    const res = await fetch(url, {
+    /*const res = await fetch(url, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
         // Authorization: "Bearer " + token,
       },
-    });
+      credentials: "include",
+    });*/
+    const res = await apiFetch(url, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
 
     if (!res.ok) {
       throw new Error("Failed getting all reservations after date");
@@ -235,13 +264,20 @@ export async function getT2ForMonthFilter(month, year, filter) {
   try {
     const url = `${API_URL}/mesecni?start_date=${firstDay}&end_date=${lastDay}&tipd=2&fup=${filter}`;
     // console.log(url);
-    const res = await fetch(url, {
+    /*const res = await fetch(url, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
         // Authorization: "Bearer " + token,
       },
-    });
+      credentials: "include",
+    });*/
+    const res = await apiFetch(url, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
 
     if (!res.ok) {
       throw new Error("Failed getting all reservations after date");
@@ -291,13 +327,20 @@ export async function getT3ForMonthForPagination(month, year, page, filter) {
   try {
     const url = `${API_URL}/mesecnip?start_date=${firstDay}&end_date=${lastDay}&tipd=3&page_size=${PAGE_SIZE}&page_id=${page}&fup=${filter}`;
     // console.log(url);
-    const res = await fetch(url, {
+    /*const res = await fetch(url, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
         // Authorization: "Bearer " + token,
       },
-    });
+      credentials: "include",
+    });*/
+    const res = await apiFetch(url, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
 
     if (!res.ok) {
       throw new Error("Failed getting all reservations after date");
@@ -345,13 +388,20 @@ export async function getT3ForMonthFilter(month, year, filter) {
   try {
     const url = `${API_URL}/mesecni?start_date=${firstDay}&end_date=${lastDay}&tipd=3&fup=${filter}`;
     // console.log(url);
-    const res = await fetch(url, {
+    /*const res = await fetch(url, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
         // Authorization: "Bearer " + token,
       },
-    });
+      credentials: "include",
+    });*/
+    const res = await apiFetch(url, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
 
     if (!res.ok) {
       throw new Error("Failed getting all reservations after date");
@@ -396,13 +446,20 @@ export async function getT4ForMonthForPagination(month, year, page) {
   // console.log(firstDay, lastDay);
   try {
     const url = `${API_URL}/mesecnit4p?start_date=${firstDay}&end_date=${lastDay}&tipd=3&page_size=${PAGE_SIZE}&page_id=${page}`;
-    const res = await fetch(url, {
+    /*const res = await fetch(url, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
         // Authorization: "Bearer " + token,
       },
-    });
+      credentials: "include",
+    });*/
+    const res = await apiFetch(url, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
 
     if (!res.ok) {
       throw new Error("Failed getting all duze ispade/kvarove");
@@ -443,13 +500,20 @@ export async function getT4ForMonthFilter(month, year) {
   // console.log(firstDay, lastDay);
   try {
     const url = `${API_URL}/mesecnit4?start_date=${firstDay}&end_date=${lastDay}&tipd=3`;
-    const res = await fetch(url, {
+    /*const res = await fetch(url, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
         // Authorization: "Bearer " + token,
       },
-    });
+      credentials: "include",
+    });*/
+    const res = await apiFetch(url, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
 
     if (!res.ok) {
       throw new Error("Failed getting all duze ispade/kvarove");

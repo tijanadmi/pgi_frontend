@@ -1,16 +1,24 @@
 const API_URL = import.meta.env.VITE_BACKEND_URL;
+import { apiFetch } from "../utils/auth";
 
 // Returns all STAYS that are were created after the given date
 export async function getRadApuMes(godina) {
   try {
     const url = `${API_URL}/radapu_mes?godina=${godina}`;
-    const res = await fetch(url, {
+    /*const res = await fetch(url, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
         // Authorization: "Bearer " + token,
       },
-    });
+      credentials: "include",
+    });*/
+    const res = await apiFetch(url, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
 
     if (!res.ok) {
       throw new Error("Failed getting rad apu po mesecima");
@@ -42,6 +50,7 @@ export async function getDApuA(godina) {
         "Content-Type": "application/json",
         // Authorization: "Bearer " + token,
       },
+      credentials: "include",
     });
 
     if (!res.ok) {

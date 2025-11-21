@@ -1,4 +1,4 @@
-import { getAuthToken } from "../utils/auth";
+import { getAuthToken, apiFetch } from "../utils/auth";
 
 const API_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -11,6 +11,7 @@ export async function login({ email, password }) {
   try {
     const res = await fetch(url, {
       method: "POST",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },
@@ -30,7 +31,10 @@ export async function login({ email, password }) {
     }
 
     const token = jsonResponse.access_token;
+    const user = jsonResponse.user;
+    console.log("Logged in user:", user);
     localStorage.setItem("token", token);
+    localStorage.setItem("user", user);
 
     const expiration = jsonResponse.access_token_expires_at;
     localStorage.setItem("expiration", expiration);
@@ -43,23 +47,25 @@ export async function login({ email, password }) {
   }
 }
 
+
+
+
+
+
+
 export async function getCurrentUser() {
-  const access_token = getAuthToken();
-  // console.log(access_token);
-
-  if (!access_token || access_token === "EXPIRED") return null;
-
-  const payload = {
-    access_token: access_token,
-  };
+ 
   const url = `${API_URL}/users/get_user_by_token`;
   try {
-    const res = await fetch(url, {
-      method: "POST",
+   /* const res = await fetch(url, {
+      method: "GET",
+      credentials: "include",
+    });*/
+    const res = await apiFetch(url, {
+      method: "GET",
       headers: {
-        "Content-Type": "application/json",
+          "Content-Type": "application/json",
       },
-      body: JSON.stringify(payload),
     });
 
     if (!res.ok) {
@@ -72,6 +78,7 @@ export async function getCurrentUser() {
     // console.log('JSON Response from getCurrentUser:', jsonResponse);
 
     const user = jsonResponse;
+    console.log("User fetched by token:", user);
     // Vrati user data
     return user;
   } catch (error) {
@@ -80,12 +87,35 @@ export async function getCurrentUser() {
   }
 }
 
-export async function logout() {
-  localStorage.removeItem("token");
-  localStorage.removeItem("expiration");
+// export async function logout() {
+//   localStorage.removeItem("token");
+//   localStorage.removeItem("expiration");
 
-  // if (error) throw new Error(error.message);
+ 
+// }
+
+export async function logout() {
+  /*const res = await fetch(`${API_URL}/users/logout`, {
+    method: "POST",
+    credentials: "include", // <<< VAŽNO — da šalje cookies!
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });*/
+
+  const url = `${API_URL}/users/logout`;
+  const res = await apiFetch(url, {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json",
+      },
+    });
+
+  if (!res.ok) throw new Error("Logout failed");
+
+  return res.json();
 }
+
 
 export async function signup({ firstName, lastName, email, phone, password }) {
   const url = `${API_URL}/v1/create_user`;

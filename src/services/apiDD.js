@@ -1,4 +1,5 @@
 import { PAGE_SIZE } from "../utils/constants";
+import { apiFetch } from "../utils/auth";
 
 const API_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -11,13 +12,22 @@ export async function getT1ForDay(day, mrcId) {
 
   try {
     const url = `${API_URL}/dnevni?datizv=${day}&tipd=1&id_s_mrc=${mrcId}&fup=all`;
-    const res = await fetch(url, {
+    /*const res = await fetch(url, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
         // Authorization: "Bearer " + token,
       },
+      credentials: "include",
+    });*/
+
+    const res = await apiFetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
+
 
     if (!res.ok) {
       throw new Error("Failed getting all reservations after date");
@@ -72,11 +82,18 @@ export async function getT1ForDayForPagination(day, mrcId, page, filter) {
   try {
     const url = `${API_URL}/dnevnip?datizv=${day}&tipd=1&page_size=${PAGE_SIZE}&page_id=${page}&fup=${filter}&id_s_mrc=${mrcId}`;
     // console.log(url);
-    const res = await fetch(url, {
+    /*const res = await fetch(url, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
         // Authorization: "Bearer " + token,
+      },
+      credentials: "include",
+    });*/
+    const res = await apiFetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
       },
     });
 
@@ -129,11 +146,18 @@ export async function getT1ForDayFilter(day, mrcId, filter) {
   try {
     const url = `${API_URL}/dnevni?datizv=${day}&tipd=1&fup=${filter}&id_s_mrc=${mrcId}`;
     // console.log(url);
-    const res = await fetch(url, {
+    /*const res = await fetch(url, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
         // Authorization: "Bearer " + token,
+      },
+      credentials: "include",
+    });*/
+    const res = await apiFetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
       },
     });
 
@@ -189,11 +213,18 @@ export async function getT2ForDayForPagination(day, mrcId, page, filter) {
   try {
     const url = `${API_URL}/dnevnip?datizv=${day}&tipd=2&page_size=${PAGE_SIZE}&page_id=${page}&fup=${filter}&id_s_mrc=${mrcId}`;
     // console.log(url);
-    const res = await fetch(url, {
+    /*const res = await fetch(url, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
         // Authorization: "Bearer " + token,
+      },
+      credentials: "include",
+    });*/
+    const res = await apiFetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
       },
     });
 
@@ -246,11 +277,18 @@ export async function getT2ForDayFilter(day, mrcId, filter) {
   try {
     const url = `${API_URL}/dnevni?datizv=${day}&tipd=2&fup=${filter}&id_s_mrc=${mrcId}`;
     // console.log(url);
-    const res = await fetch(url, {
+    /*const res = await fetch(url, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
         // Authorization: "Bearer " + token,
+      },
+      credentials: "include",
+    });*/
+    const res = await apiFetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
       },
     });
 
@@ -306,11 +344,18 @@ export async function getT3ForDayForPagination(day, mrcId, page, filter) {
   try {
     const url = `${API_URL}/dnevnip?datizv=${day}&tipd=3&page_size=${PAGE_SIZE}&page_id=${page}&fup=${filter}&id_s_mrc=${mrcId}`;
     // console.log(url);
-    const res = await fetch(url, {
+    /*const res = await fetch(url, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
         // Authorization: "Bearer " + token,
+      },
+      credentials: "include",
+    });*/
+    const res = await apiFetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
       },
     });
 
@@ -363,11 +408,18 @@ export async function getT3ForDayFilter(day, mrcId, filter) {
   try {
     const url = `${API_URL}/dnevni?datizv=${day}&tipd=3&fup=${filter}&id_s_mrc=${mrcId}`;
     // console.log(url);
-    const res = await fetch(url, {
+    /*const res = await fetch(url, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
         // Authorization: "Bearer " + token,
+      },
+      credentials: "include",
+    });*/
+    const res = await apiFetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
       },
     });
 
@@ -410,11 +462,18 @@ export async function getT4ForDay(day, mrcId) {
 
   try {
     const url = `${API_URL}/dnevnit4p?datizv=${day}&id_s_mrc=${mrcId}`;
-    const res = await fetch(url, {
+    /*const res = await fetch(url, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
         // Authorization: "Bearer " + token,
+      },
+      credentials: "include",
+    });*/
+    const res = await apiFetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
       },
     });
 
