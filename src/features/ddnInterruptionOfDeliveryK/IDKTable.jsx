@@ -5,7 +5,7 @@ import Table from "../../ui/Table";
 import Menus from "../../ui/Menus";
 import ExportExcelButton from "../../ui/ExportExcelButton";
 
-import { useListDDNInterruptionOfDeliveryK } from "./useListDDNInterruptionOfDeliveryK";
+import { useListDDNInterruptionOfDeliveryKPeriod } from "./useListDDNInterruptionOfDeliveryKPeriod";
 import { useListDDNInterruptionOfDeliveryKExcel } from "./useListDDNInterruptionOfDeliveryKExcel";
 import Spinner from "../../ui/Spinner";
 import Pagination from "../../ui/Pagination";
@@ -29,7 +29,7 @@ const Opis = styled.div`
 `;
 
 function IDKTable() {
-  const { prekidik, isLoading, count } = useListDDNInterruptionOfDeliveryK();
+  const { prekidik, isLoading, count } = useListDDNInterruptionOfDeliveryKPeriod();
   const {
     prekidik: prekidikExcel,
     isLoading: isLoading2,
