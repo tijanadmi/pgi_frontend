@@ -6,7 +6,7 @@ import Menus from "../../ui/Menus";
 import ExportExcelButton from "../../ui/ExportExcelButton";
 
 import { useListDDNInterruptionOfDeliveryKPeriod } from "./useListDDNInterruptionOfDeliveryKPeriod";
-import { useListDDNInterruptionOfDeliveryKExcel } from "./useListDDNInterruptionOfDeliveryKExcel";
+import { useListDDNInterruptionOfDeliveryKExcelPeriod } from "./useListDDNInterruptionOfDeliveryKExcelPeriod";
 import Spinner from "../../ui/Spinner";
 import Pagination from "../../ui/Pagination";
 import Empty from "../../ui/Empty";
@@ -34,7 +34,7 @@ function IDKTable() {
     prekidik: prekidikExcel,
     isLoading: isLoading2,
     count: count2,
-  } = useListDDNInterruptionOfDeliveryKExcel();
+  } = useListDDNInterruptionOfDeliveryKExcelPeriod();
 
   if (isLoading || isLoading2) return <Spinner />;
   // console.log("Prekidi korisnika u IDKTable:", prekidik);

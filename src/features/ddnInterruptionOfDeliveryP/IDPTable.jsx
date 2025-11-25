@@ -5,11 +5,11 @@ import Table from "../../ui/Table";
 import Menus from "../../ui/Menus";
 import ExportExcelButton from "../../ui/ExportExcelButton";
 
-import { useListDDNInterruptionOfDeliveryP } from "./useListDDNInterruptionOfDeliveryP";
+import { useListDDNInterruptionOfDeliveryPPeriod } from "./useListDDNInterruptionOfDeliveryPPeriod";
 import Spinner from "../../ui/Spinner";
 import Pagination from "../../ui/Pagination";
 import Empty from "../../ui/Empty";
-import { useListDDNInterruptionOfDeliveryPExcel } from "./useListDDNInterruptionOfDeliveryPExcel";
+import { useListDDNInterruptionOfDeliveryPExcelPeriod } from "./useListDDNInterruptionOfDeliveryPExcelPeriod";
 
 const StackedH = styled.div`
   display: flex;
@@ -29,12 +29,12 @@ const Opis = styled.div`
 `;
 
 function IDPTable() {
-  const { prekidip, isLoading, count } = useListDDNInterruptionOfDeliveryP();
+  const { prekidip, isLoading, count } = useListDDNInterruptionOfDeliveryPPeriod();
   const {
     prekidip: prekidipExcel,
     isLoading: isLoading2,
     count: count2,
-  } = useListDDNInterruptionOfDeliveryPExcel();
+  } = useListDDNInterruptionOfDeliveryPExcelPeriod();
 
   if (isLoading || isLoading2) return <Spinner />;
   // console.log('Reservations:', reservations);

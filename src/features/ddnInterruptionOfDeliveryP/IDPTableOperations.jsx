@@ -1,6 +1,7 @@
 import MrcSelect from "../../features/lovs/MrcSelect";
-import YearSelect from "../../ui/YearSelect";
-import MonthSelect from "../../ui/MonthSelect";
+// import YearSelect from "../../ui/YearSelect";
+// import MonthSelect from "../../ui/MonthSelect";
+import RangeDateSelect from "../../ui/RangeDateSelect";
 import TableOperations from "../../ui/TableOperations";
 
 function IDPTableOperation() {
@@ -9,8 +10,9 @@ function IDPTableOperation() {
       <TableOperations>
         <MrcSelect />
 
-        <MonthSelect />
-        <YearSelect></YearSelect>
+        {/* <MonthSelect />
+        <YearSelect></YearSelect> */}
+        <RangeDateSelect initialInterval={30}  />
       </TableOperations>
     </>
   );

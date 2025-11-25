@@ -119,7 +119,7 @@ export async function getListDDNInterruptionOfDeliveryKPeriod(
     });
 
     if (!res.ok) {
-      throw new Error("Failed getting all reservations after date");
+      throw new Error("Failed getting all prekidk after date");
     }
 
     // Parsirajte JSON odgovor
@@ -189,7 +189,7 @@ export async function getListDDNInterruptionOfDeliveryKExcel(
     });
 
     if (!res.ok) {
-      throw new Error("Failed getting all reservations after date");
+      throw new Error("Failed getting all prekidk after date");
     }
 
     // Parsirajte JSON odgovor
@@ -218,6 +218,64 @@ export async function getListDDNInterruptionOfDeliveryKExcel(
   } catch (error) {
     // console.log("catch")
     console.error("Error fetching prekidip:", error.message);
+    throw error;
+  }
+}
+
+// Daje sve prekide za odredjeni mesec, godinu i rdc pripremljene za export u excel
+export async function getListDDNInterruptionOfDeliveryKExcelPeriod(
+  firstDay,
+  lastDay,
+  mrcId
+) {
+  //   const token = getAuthToken();
+
+  if (!mrcId || mrcId === 9) {
+    mrcId = "all";
+  }
+
+  // const { firstDay, lastDay } = getMonthStartEnd(month, year);
+  
+  try {
+    const url = `${API_URL}/interruptionofusers_excel?start_date=${firstDay}&end_date=${lastDay}&mrc=${mrcId}`;
+    
+    const res = await apiFetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!res.ok) {
+      throw new Error("Failed getting all prekidk after date");
+    }
+
+    // Parsirajte JSON odgovor
+    const jsonResponse = await res.json();
+
+    // Ako je odgovor prazan objekat {}, vrati prazan niz []
+    if (!jsonResponse || Object.keys(jsonResponse).length === 0) {
+      return {
+        data: [],
+        count: 0,
+      };
+    }
+
+    // Proverite da li postoji polje "prekidik" i "total"
+    const prekidik = jsonResponse.prekidik || []; // Ako nema rezervacija, postavi praznu listu
+    const total = jsonResponse.total ? parseInt(jsonResponse.total, 10) : 0;
+
+    // Vratite rezultat kao objekat
+    return {
+      data: prekidik,
+      count: total, // Osiguranje da je broj
+    };
+
+    // Ako ne postoji polje "reservations", vrati prazan niz []
+    //return jsonResponse.prekidp || [];
+  } catch (error) {
+    // console.log("catch")
+    console.error("Error fetching prekidik:", error.message);
     throw error;
   }
 }
