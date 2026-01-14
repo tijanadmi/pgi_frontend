@@ -7,7 +7,13 @@ function AddIntOfDeliveryP() {
     <div>
       <Modal>
         <Modal.Open opens="prekidp-form">
-          <Button>+</Button>
+          <Button
+      type="submit"
+      size="large"
+      variation="primary"
+    >
+      Унеси нови прекид производње
+    </Button>
         </Modal.Open>
         <Modal.Window name="prekidp-form">
           <CreateIntOfDeliveryPForm />

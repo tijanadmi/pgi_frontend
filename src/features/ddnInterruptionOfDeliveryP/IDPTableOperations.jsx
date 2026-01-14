@@ -9,7 +9,6 @@ function IDPTableOperation() {
     <>
       <TableOperations>
         <MrcSelect />
-
         {/* <MonthSelect />
         <YearSelect></YearSelect> */}
         <RangeDateSelect initialInterval={30}  />

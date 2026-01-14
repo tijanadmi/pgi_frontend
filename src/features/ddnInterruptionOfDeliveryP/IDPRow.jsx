@@ -2,24 +2,18 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 
 // import { format } from "date-fns";
-// import {
-//   HiArrowDownOnSquare,
-//   HiArrowUpOnSquare,
-//   HiEye,
-//   HiTrash,
-// } from "react-icons/hi2";
-// import { useNavigate } from "react-router-dom";
+import { HiPencil, HiSquare2Stack, HiTrash } from "react-icons/hi2";
+
 
 import Tag from "../../ui/Tag";
 import Table from "../../ui/Table";
-// import Modal from "../../ui/Modal";
-// import Menus from "../../ui/Menus";
-// import ConfirmDelete from "../../ui/ConfirmDelete";
+import Modal from "../../ui/Modal";
+import Menus from "../../ui/Menus";
+import ConfirmDelete from "../../ui/ConfirmDelete";
+import CreateIntOfDeliveryPForm from "./CreateIntOfDeliveryPForm";
 
-// import { formatCurrency } from "../../utils/helpers";
-// import { formatDistanceFromNow } from "../../utils/helpers";
-// import { useCheckout } from "../check-in-out/useCheckout";
-// import { useDeleteBooking } from "./useDeleteBooking";
+
+import { useDeleteDDNInterruptionOfDeliveryP } from "./useDeleteDDNInterruptionOfDeliveryP";
 
 const Room = styled.div`
   font-size: 1.6rem;
@@ -48,26 +42,24 @@ const Stacked = styled.div`
 //   font-weight: 500;
 // `;
 
-function IDPRow({
-  pp: {
-    // id: id,
-    // mrc,
+function IDPRow({pp}) {
+
+  const {
+    id: id,
     vrepoc,
     vrezav,
     ob_opis,
     polje_opis,
     id_s_vr_prek,
-    //vrsta_prek,
     podvrsta_prek,
     uzrok,
     poduzrok_prek,
     snaga,
-    // opis,
-  },
-}) {
+    version,
+  } = pp;
   //   const navigate = useNavigate();
   //   const { checkout, isCheckingOut } = useCheckout();
-  //   const { deleteBooking, isDeleting } = useDeleteBooking();
+    const { deleteInterruption, isDeleting } = useDeleteDDNInterruptionOfDeliveryP();
 
   // console.log("prekidip:", pp);
 
@@ -121,50 +113,41 @@ function IDPRow({
 
       {/* <Amount>{formatCurrency(total_price)}</Amount> */}
 
-      {/* <Modal>
-        <Menus.Menu>
-          <Menus.Toggle id={reservation_id} />
-          <Menus.List id={reservation_id}>
-            <Menus.Button
-              icon={<HiEye />}
-              onClick={() => navigate(`/bookings/${reservation_id}`)}
-            >
-              See details
-            </Menus.Button>
+      <Modal>
+          <Menus.Menu>
+            <Menus.Toggle id={id} />
 
-            {status === "unconfirmed" && (
-              <Menus.Button
-                icon={<HiArrowDownOnSquare />}
-                onClick={() => navigate(`/checkin/${reservation_id}`)}
+            <Menus.List id={id}>
+              {/* <Menus.Button
+                icon={<HiSquare2Stack />}
+                // onClick={handleDuplicate}
+                // disabled={isCreating}
               >
-                Check in
-              </Menus.Button>
-            )}
+                Duplicate
+              </Menus.Button> */}
 
-            {status === "checked-in" && (
-              <Menus.Button
-                icon={<HiArrowUpOnSquare />}
-                onClick={() => checkout(reservation_id)}
-                disabled={isCheckingOut}
-              >
-                Check out
-              </Menus.Button>
-            )}
+              <Modal.Open opens="edit">
+                <Menus.Button icon={<HiPencil />}>Измени</Menus.Button>
+              </Modal.Open>
 
-            <Modal.Open opens="delete">
-              <Menus.Button icon={<HiTrash />}>Delete booking</Menus.Button>
-            </Modal.Open>
-          </Menus.List>
-        </Menus.Menu>
+              <Modal.Open opens="delete">
+                <Menus.Button icon={<HiTrash />}>Обриши</Menus.Button>
+              </Modal.Open>
+            </Menus.List>
 
-        <Modal.Window name="delete">
-          <ConfirmDelete
-            resourceName="booking"
-            disabled={isDeleting}
-            onConfirm={() => deleteBooking(reservation_id)}
-          />
-        </Modal.Window>
-      </Modal> */}
+            <Modal.Window name="edit">
+              <CreateIntOfDeliveryPForm interruptionOfDeliveryPToEdit={pp} />
+            </Modal.Window>
+
+            <Modal.Window name="delete">
+              <ConfirmDelete
+                resourceName="прекид производње"
+                disabled={isDeleting}
+                onConfirm={() => deleteInterruption({ id, version })}
+              />
+            </Modal.Window>
+          </Menus.Menu>
+        </Modal>
     </Table.Row>
   );
 }

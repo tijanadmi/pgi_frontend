@@ -2,6 +2,7 @@ import IDPTable from "../features/ddnInterruptionOfDeliveryP/IDPTable";
 import IDPTableOperations from "../features/ddnInterruptionOfDeliveryP/IDPTableOperations";
 import Heading from "../ui/Heading";
 import Row from "../ui/Row";
+import AddIntOfDeliveryP from "../features/ddnInterruptionOfDeliveryP/AddIntOfDeliveryP";
 // import AddRestriction from "../features/restrictions/AddRestriction";
 
 function DDNInterruptionOfDeliveryP() {
@@ -13,6 +14,11 @@ function DDNInterruptionOfDeliveryP() {
       </Row>
 
       <Row>
+        <AddIntOfDeliveryP />
+      </Row>
+      <Row>
+        {/* <AddIntOfDeliveryP /> */}
+        
         <IDPTable />
         {/* <AddRestriction />     */}
       </Row>

@@ -3,11 +3,14 @@ import styled from "styled-components";
 const StyledFormRow = styled.div`
   display: grid;
   align-items: center;
-  grid-template-columns: 24rem 1fr /*1.2fr*/; /* Dve kolone za labelu i input */
-  gap: 2.4rem;
-
+  // grid-template-columns: 24rem 1fr /*1.2fr*/; /* Dve kolone za labelu i input */
+  // gap: 2.4rem;
+  grid-template-columns: 18rem minmax(0, 1fr);
+  column-gap: 1.6rem;
+  row-gap: 0.6rem;
   padding: 1.2rem 0;
 
+  
   &:first-child {
     padding-top: 0;
   }

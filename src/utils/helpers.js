@@ -47,3 +47,29 @@ export const getMonthStartEnd = (month, year) => {
     lastDay: formatDate(lastDay),
   };
 };
+
+/** dd.mm.yyyy hh:mm -> yyyy-mm-ddThh:mm */
+export function dotDateTimeToInput(val) {
+  if (!val) return "";
+
+  const [date, time] = val.split(" ");
+  if (!date || !time) return "";
+
+  const [dd, mm, yyyy] = date.split(".");
+  if (!dd || !mm || !yyyy) return "";
+
+  return `${yyyy}-${mm.padStart(2, "0")}-${dd.padStart(2, "0")}T${time}`;
+}
+
+/** yyyy-mm-ddThh:mm -> dd.mm.yyyy hh:mm */
+export function inputToDotDateTime(val) {
+  if (!val) return "";
+
+  const [date, time] = val.split("T");
+  if (!date || !time) return "";
+
+  const [yyyy, mm, dd] = date.split("-");
+  if (!yyyy || !mm || !dd) return "";
+
+  return `${dd.padStart(2, "0")}.${mm.padStart(2, "0")}.${yyyy} ${time}`;
+}
