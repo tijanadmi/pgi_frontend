@@ -476,20 +476,18 @@ useEffect(() => {
     control={control}
     rules={{
       validate: (value) =>
-         !isNeplaniran || value || "Uzrok je obavezan za neplaniran prekid",
+         !isNeplaniran || !!value || "Uzrok je obavezan za neplaniran prekid",
     }}
     render={({ field }) => (
       <UzrokPrekSearchSelect
         value={field.value}
-        onChange={(val) => {
-          field.onChange(val);
-          // field.onChange(val);
-          setValue("id_s_poduzrok_prek", "");
-          // reset({
-          //   ...watch(),
-          //   id_s_poduzrok_prek: "",
-          // });
-        }}
+        onChange={(opt) => {
+          field.onChange(opt?.value ?? "");
+          setValue("id_s_poduzrok_prek", "", {
+            shouldValidate: true,
+            shouldDirty: true,
+          });
+      }}
         isDisabled={isCreating || !isNeplaniran}
       />
     )}
@@ -533,7 +531,7 @@ useEffect(() => {
     control={control}
     rules={{
       validate: (value) =>
-        !isEMS || value || "Poduzrok je obavezan kada je uzrok EMS",
+        !isEMS || !!value || "Poduzrok je obavezan kada je uzrok EMS",
     }}
     render={({ field }) => (
       <PodUzrokPrekSearchSelect
