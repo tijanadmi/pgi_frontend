@@ -5,7 +5,7 @@ function PodVrstaPrekSearchSelect({ value, onChange, isDisabled }) {
     // console.log("🔥 PodVrstaPrekSearchSelect render, value =", value);
   const { isLoading, podvrstaprek } = usePodVrstaPrek();
 
-  if (isLoading) return <p>Učitavanje...</p>;
+  if (isLoading) return <p>Учитавање...</p>;
 
   const options =
     podvrstaprek?.map((vp) => ({
@@ -20,11 +20,11 @@ function PodVrstaPrekSearchSelect({ value, onChange, isDisabled }) {
       options={options}
       value={value ?? ""}   // 👈 uvek kontrolisana vrednost
       onChange={(opt) => {
-        console.log("iPoruka iz komponente PodVrstaPrekSearchSelect: PodVrstaPrek changed to:", opt);
+        // console.log("iPoruka iz komponente PodVrstaPrekSearchSelect: PodVrstaPrek changed to:", opt);
         onChange(opt);     // 👈 RHF dobija samo ID
       }}
       isDisabled={isDisabled}
-      placeholder="Izaberi vrstu prekida..."
+      placeholder="Изабери врсту прекида..."
       returnOption   // 👈 KLJUČNO
     />
   );

@@ -22,7 +22,7 @@ const sizes = {
 
 const variations = {
   primary: css`
-    color: var(--color-brand-50);
+    color: white;
     background-color: var(--color-brand-600);
 
     &:hover {
@@ -30,31 +30,69 @@ const variations = {
     }
   `,
   secondary: css`
-    color: var(--color-grey-600);
-    background: var(--color-grey-0);
-    border: 1px solid var(--color-grey-200);
+    color: var(--color-grey-800);
+    background-color: var(--color-grey-300);
 
     &:hover {
-      background-color: var(--color-grey-50);
+      background-color: var(--color-grey-400);
     }
   `,
+
+   ghost: css`
+    color: var(--color-grey-700);
+    background: transparent;
+    background-color: var(--color-grey-100);
+    box-shadow: none;
+
+    &:hover {
+      background-color: var(--color-grey-200);
+    }
+  `,
+
   danger: css`
-    color: var(--color-red-100);
-    background-color: var(--color-red-700);
+    color: white;
+    background-color: var(--color-red-600);
 
     &:hover {
-      background-color: var(--color-red-800);
+      background-color: var(--color-red-700);
     }
   `,
+
+  success: css`
+  color: white;
+  background-color: var(--color-green-600);
+
+  &:hover {
+    background-color: var(--color-green-700);
+  }
+`,
+
 };
 
 const Button = styled.button`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+
   border: none;
-  border-radius: var(--border-radius-sm);
+  border-radius: 8px; /* мекше него var */
   box-shadow: var(--shadow-sm);
+
+  cursor: pointer;
+  transition: all 0.2s ease;
 
   ${(props) => sizes[props.size]}
   ${(props) => variations[props.variation]}
+
+  &:active {
+    transform: translateY(1px);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
 `;
 
 Button.defaultProps = {

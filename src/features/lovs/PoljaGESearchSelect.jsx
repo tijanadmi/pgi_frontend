@@ -13,12 +13,12 @@ function PoljaGESearchSelect({ obId,value, onChange, isDisabled }) {
         value=""
         onChange={() => {}}
         isDisabled
-        placeholder="Prvo izaberite objekat"
+        placeholder="Прво изаберите објекат"
       />
     );
   }
 
-  if (isLoading) return <p>Učitavanje...</p>;
+  if (isLoading) return <p>Учитавање...</p>;
 
   const options =
     poljaGE?.map((polje) => ({
@@ -35,7 +35,7 @@ function PoljaGESearchSelect({ obId,value, onChange, isDisabled }) {
         onChange(val);     // 👈 RHF dobija samo ID
       }}
       isDisabled={isDisabled}
-      placeholder="Izaberi polje..."
+      placeholder="Изабери поље..."
     />
   );
 }

@@ -5,7 +5,7 @@ function MrcsForInsertSearchSelect({ value, onChange, isDisabled }) {
     // console.log("🔥 MrcsForInsertSearchSelect render, value =", value);
   const { isLoading, mrcs } = useMrcsForInsert();
 
-  if (isLoading) return <p>Učitavanje...</p>;
+  if (isLoading) return <p>Учитавање...</p>;
 
   const options =
     mrcs?.map((mrc) => ({
@@ -22,7 +22,7 @@ function MrcsForInsertSearchSelect({ value, onChange, isDisabled }) {
         onChange(val);     // 👈 RHF dobija samo ID
       }}
       isDisabled={isDisabled}
-      placeholder="Izaberi mrc..."
+      placeholder="Изабери РДЦ..."
     />
   );
 }

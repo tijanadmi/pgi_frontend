@@ -13,13 +13,13 @@ function ObjHETEVESearchSelect({ mrcId, value, onChange, isDisabled }) {
         value=""
         onChange={() => {}}
         isDisabled
-        placeholder="Prvo izaberite MRC"
+        placeholder="Прво изаберите РДЦ"
       />
     );
   }
 
 
-  if (isLoading) return <p>Učitavanje...</p>;
+  if (isLoading) return <p>Учитавање...</p>;
 
   const options =
     objHETEVE?.map((obj) => ({
@@ -38,7 +38,7 @@ return (
         onChange(opt); // 👈 prosleđuje ceo option
       }}
       isDisabled={isDisabled}
-      placeholder="Izaberi objekat (HE, TE, VE)..."
+      placeholder="Изабери објекат (HE, TE, VE)..."
       returnOption   // 👈 KLJUČNO
     />
   );

@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 const StyledFormColumn = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Tri kolone jednake širine */
-  gap: 2.4rem; /* Razmak između kolona */
+  grid-template-columns: repeat(${(props) => props.$columns}, 1fr);
+  gap: ${(props) => props.$gap || "2.4rem"};
   align-items: start; /* Poravnanje elemenata na vrh */
 
   padding: 1.2rem 0;
@@ -18,19 +18,17 @@ const StyledFormColumn = styled.div`
 `;
 
 const Label = styled.label`
-  grid-column: span 3; /* Labela se proteže na tri kolone */
+  grid-column: span ${(props) => props.$columns};
   font-weight: 500;
   margin-bottom: 0.8rem;
 `;
 
 
-function FormColumn({ label, error, children }) {
+function FormColumn({ label, error, children, columns = 3, gap }) {
   return (
-    <StyledFormColumn>
-      {label && <Label>{label}</Label>}
+    <StyledFormColumn  $columns={columns} $gap={gap}>
+      {label && <Label $columns={columns}>{label}</Label>}
       {children} {/* Deca su podeljena u tri kolone */}
-
-
     </StyledFormColumn>
   );
 }

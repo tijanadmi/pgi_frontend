@@ -4,6 +4,11 @@ const ButtonGroup = styled.div`
   display: flex;
   gap: 1.2rem;
   justify-content: flex-end;
+  align-items: center;
+
+  & button:first-child {
+    opacity: 0.85;
+  }
 `;
 
 export default ButtonGroup;

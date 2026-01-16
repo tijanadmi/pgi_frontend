@@ -4,7 +4,7 @@ import SearchSelect from "../../ui/SearchSelect";
 function PodUzrokPrekSearchSelect({ value, onChange, isDisabled }) {
   const { isLoading, poduzrokprek } = usePodUzrokPrek();
 
-  if (isLoading) return <p>Učitavanje...</p>;
+  if (isLoading) return <p>Учитавање...</p>;
 
   const options =
     poduzrokprek?.map((p) => ({
@@ -20,8 +20,8 @@ function PodUzrokPrekSearchSelect({ value, onChange, isDisabled }) {
       isDisabled={isDisabled}
       placeholder={
         isDisabled
-          ? "Uzrok mora biti EMS"
-          : "Izaberite poduzrok prekida..."
+          ? "Узрок мора бити ЕМС"
+          : "Изаберите подузрок прекида..."
       }
       isClearable
     />
