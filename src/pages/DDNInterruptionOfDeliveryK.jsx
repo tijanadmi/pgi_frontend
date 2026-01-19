@@ -1,3 +1,4 @@
+import AddIntOfDeliveryK from "../features/ddnInterruptionOfDeliveryK/AddIntOfDeliveryK";
 import IDKTable from "../features/ddnInterruptionOfDeliveryK/IDKTable";
 import IDKTableOperations from "../features/ddnInterruptionOfDeliveryK/IDKTableOperations";
 import Heading from "../ui/Heading";
@@ -10,6 +11,10 @@ function DDNInterruptionOfDeliveryK() {
       <Row type="horizontal">
         <Heading as="h1">Прекиди корисника</Heading>
         <IDKTableOperations />
+      </Row>
+
+      <Row>
+        <AddIntOfDeliveryK />
       </Row>
 
       <Row>

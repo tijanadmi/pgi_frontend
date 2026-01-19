@@ -18,8 +18,8 @@ function VrstaPrekSearchSelect({ value, onChange, isDisabled }) {
       options={options}
       value={value ?? ""}   // 👈 uvek kontrolisana vrednost
       onChange={(val) => {
-        console.log("iPoruka iz komponente VrstaPrekSearchSelect: VrstaPrek changed to:", val);
-        onChange(val);     // 👈 RHF dobija samo ID
+        console.log("VrstaPrek changed to:", val);
+        onChange(val ?? "");
       }}
       isDisabled={isDisabled}
       placeholder="Izaberi vrstu prekida..."

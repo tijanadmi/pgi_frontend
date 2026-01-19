@@ -218,6 +218,35 @@ export async function getObjHETEVE(mrcId) {
   }
 }
 
+// Returns all objects TS/RP for insert/update forms
+export async function getObjTSRP(mrcId) {
+  if (!mrcId) return [];
+  
+  try {
+    const url = `${API_URL}/objtsrp?mrc=${mrcId}`;
+
+    const res = await apiFetch(url, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
+    if (!res.ok) {
+      throw new Error("Failed getting objects of type TS/RP");
+    }
+
+    // Parsirajte JSON odgovor
+    const jsonResponse = await res.json();
+    // console.log("getObjTSRP - fetched objects:", jsonResponse);
+    return jsonResponse || [];
+  } catch (error) {
+    // console.log("catch")
+    console.error("Error fetching objects of type TS/RP:", error.message);
+    throw error;
+  }
+}
+
 // Returns all fields of type Generator for insert/update forms
 export async function getPoljaGE(obId) {
   if (!obId) return [];
@@ -242,6 +271,32 @@ export async function getPoljaGE(obId) {
   } catch (error) {
     // console.log("catch")
     console.error("Error fetching fields of type Generator:", error.message);
+    throw error;
+  }
+}
+
+// Returns all merna mesta for insert/update forms
+export async function getMernaMesta() {
+  try {
+    const url = `${API_URL}/mernamesta`;
+    const res = await apiFetch(url, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
+    if (!res.ok) {
+      throw new Error("Failed getting merna mesta");
+    }
+
+    // Parsirajte JSON odgovor
+    const jsonResponse = await res.json();
+
+    return jsonResponse || [];
+  } catch (error) {
+    // console.log("catch")
+    console.error("Error fetching merna mesta:", error.message);
     throw error;
   }
 }

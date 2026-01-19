@@ -279,3 +279,70 @@ export async function getListDDNInterruptionOfDeliveryKExcelPeriod(
     throw error;
   }
 }
+
+export async function createEditInterruptionOfUsers(newInterruption, id, version) {
+  // Ako ima id → UPDATE, ako nema → CREATE
+
+  
+  const isEdit = Boolean(id);
+
+  // Validacija samo za UPDATE
+  if (isEdit && (version === undefined || version === null)) {
+    throw new Error("Verzija je obavezna za update");
+  }
+
+  const url = isEdit
+    ? `${API_URL}/interruptionofusers/${id}/${version}` // UPDATE endpoint
+    : `${API_URL}/createinterruptionofusers`; // CREATE endpoint
+
+  const method = isEdit ? "PUT" : "POST";
+
+  // Payload mora 1:1 da odgovara backend struct-u
+  const interruptionData = {
+    id_s_mrc: newInterruption.id_s_mrc,
+    id_tipob: newInterruption.id_tipob,
+    ob_id: newInterruption.ob_id,
+    vrepoc: newInterruption.vrepoc,
+    vrezav: newInterruption.vrezav || "",
+    id_s_vr_prek: newInterruption.id_s_vr_prek,
+    id_s_uzrok_prek: newInterruption.id_s_uzrok_prek || 0,
+    snaga: newInterruption.snaga || "",
+    opis: newInterruption.opis || "",
+    id_s_poduzrok_prek: newInterruption.id_s_poduzrok_prek || 0,
+    id_s_merna_mesta: newInterruption.id_s_merna_mesta || 0,
+    broj_mesta: newInterruption.broj_mesta || "",
+  };
+
+  console.log("interruptionData:", interruptionData);
+
+  try {
+    const response = await apiFetch(url, {
+      method,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(interruptionData),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(
+        errorData?.error ||
+          `Failed to ${isEdit ? "update" : "create"} interruption`
+      );
+    }
+
+    // CREATE → obično vraća objekat
+    // UPDATE → često vraća update-ovani objekat
+    const jsonResponse = await response.json();
+    return jsonResponse;
+  } catch (error) {
+    console.error(
+      `Error ${isEdit ? "updating" : "creating"} interruption of users:`,
+      error.message
+    );
+    throw error;
+  }
+}
+
+
