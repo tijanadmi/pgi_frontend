@@ -475,7 +475,7 @@ useEffect(() => {
     type="submit"
     size="medium"
     disabled={isWorking}
-    variation={isEditSession ? "secondary" : "success"}
+    variation="primary"
   >
     {isEditSession ? "Измени прекид" : "Сачувај прекид"}
   </Button>

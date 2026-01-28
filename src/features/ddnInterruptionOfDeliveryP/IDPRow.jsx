@@ -2,7 +2,7 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 
 // import { format } from "date-fns";
-import { HiPencil, HiSquare2Stack, HiTrash } from "react-icons/hi2";
+import { HiPencil, HiSquare2Stack, HiTrash , HiArrowDownOnSquare, HiArrowUpOnSquare} from "react-icons/hi2";
 
 
 import Tag from "../../ui/Tag";
@@ -10,10 +10,12 @@ import Table from "../../ui/Table";
 import Modal from "../../ui/Modal";
 import Menus from "../../ui/Menus";
 import ConfirmDelete from "../../ui/ConfirmDelete";
+import ConfirmUpdateBI from "../../ui/ConfirmUpdateBI";
 import CreateIntOfDeliveryPForm from "./CreateIntOfDeliveryPForm";
 
 
 import { useDeleteDDNInterruptionOfDeliveryP } from "./useDeleteDDNInterruptionOfDeliveryP";
+import { useEditDDNInterruptionOfDeliveryBI } from "./useEditDDNInterruptionOfDeliveryBI";
 
 const Room = styled.div`
   font-size: 1.6rem;
@@ -56,10 +58,12 @@ function IDPRow({pp}) {
     poduzrok_prek,
     snaga,
     version,
+    bi,
   } = pp;
   //   const navigate = useNavigate();
   //   const { checkout, isCheckingOut } = useCheckout();
     const { deleteInterruption, isDeleting } = useDeleteDDNInterruptionOfDeliveryP();
+    const { editInterruptionOfProductionBI, isEditing } = useEditDDNInterruptionOfDeliveryBI();
 
   // console.log("prekidip:", pp);
 
@@ -80,7 +84,7 @@ function IDPRow({pp}) {
   //   };
 
   return (
-    <Table.Row>
+    < Table.Row bi={bi}>
       <Room>{ob_opis}</Room>
 
       <Stacked>
@@ -126,6 +130,24 @@ function IDPRow({pp}) {
                 Duplicate
               </Menus.Button> */}
 
+              {bi === "" && (
+                <Modal.Open opens="updateBI">
+                  <Menus.Button icon={<HiArrowDownOnSquare />}>
+                    Одабери за БИ
+                  </Menus.Button>
+                </Modal.Open>
+              )}
+
+              {bi === "1" && (
+                <Modal.Open opens="updateBI">
+                  <Menus.Button icon={<HiArrowUpOnSquare />}>
+                    Избаци из БИ
+                  </Menus.Button>
+                </Modal.Open>
+              )}  
+            
+              
+
               <Modal.Open opens="edit">
                 <Menus.Button icon={<HiPencil />}>Измени</Menus.Button>
               </Modal.Open>
@@ -134,6 +156,19 @@ function IDPRow({pp}) {
                 <Menus.Button icon={<HiTrash />}>Обриши</Menus.Button>
               </Modal.Open>
             </Menus.List>
+
+            <Modal.Window name="updateBI">
+              <ConfirmUpdateBI
+                resourceName="одаберете/не одаберете прекид производње за БИ"
+                disabled={isEditing}
+                onConfirm={() =>
+                  editInterruptionOfProductionBI({
+                    bi: bi === "" ? 0 : 1,
+                    id,
+                    version,
+                  })}
+              />
+            </Modal.Window>
 
             <Modal.Window name="edit">
               <CreateIntOfDeliveryPForm interruptionOfDeliveryPToEdit={pp} />

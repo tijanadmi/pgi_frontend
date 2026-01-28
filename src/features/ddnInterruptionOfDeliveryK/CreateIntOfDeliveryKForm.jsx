@@ -462,8 +462,8 @@ useEffect(() => {
       <FormRow>
         <ButtonGroup>
   <Button
-    variation="ghost"
-    type="button"
+     variation="secondary"
+    type="reset"
     size="medium"
     onClick={() => onCloseModal?.()}
   >
@@ -471,10 +471,10 @@ useEffect(() => {
   </Button>
 
   <Button
-    type="submit"
     size="medium"
     disabled={isWorking}
-    variation={isEditSession ? "secondary" : "success"}
+    variation="primary"
+    type="submit"
   >
     {isEditSession ? "Измени прекид" : "Сачувај прекид"}
   </Button>

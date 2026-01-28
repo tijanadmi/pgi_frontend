@@ -37,7 +37,7 @@ function IDPTable() {
   } = useListDDNInterruptionOfDeliveryPExcelPeriod();
 
   if (isLoading || isLoading2) return <Spinner />;
-  // console.log('Reservations:', reservations);
+  // console.log('prekidp:', prekidip);
   // console.log('count:', count);
   if (count === 0) return <Empty resourceName="прекид производње" />;
 

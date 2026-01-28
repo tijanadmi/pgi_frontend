@@ -32,6 +32,9 @@ const StyledHeader = styled(CommonRow)`
 const StyledRow = styled(CommonRow)`
   padding: 1.2rem 2.4rem;
 
+  background-color: ${({ bi }) => (bi === "1" ? " #f0f0f0" : "inherit")};
+  /* #ffe5e5 = svetlo crvena, možeš staviti #f0f0f0 za sivu */
+
   &:not(:last-child) {
     border-bottom: 1px solid var(--color-grey-100);
   }
@@ -78,10 +81,10 @@ function Header({ children }) {
     </StyledHeader>
   );
 }
-function Row({ children }) {
+function Row({ children, bi }) {
   const { columns } = useContext(TableContext);
   return (
-    <StyledRow role="row" columns={columns}>
+    <StyledRow role="row" columns={columns} bi={bi}>
       {children}
     </StyledRow>
   );

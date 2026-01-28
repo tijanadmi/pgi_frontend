@@ -400,12 +400,18 @@ export async function createEditInterruptionOfProduction(newInterruption, id, ve
 }
 
 export async function updateDDNInterruptionOfDeliveryBI(id, version, bi) {
+  console.log("updateDDNInterruptionOfDeliveryBI called with:", { id, version, bi });
   if (!id) {
     throw new Error("ID je obavezan");
   }
 
   if (version === undefined || version === null) {
     throw new Error("Verzija je obavezna za izmenu BI polja");
+  }
+  if (bi == 0) {
+    bi = 1;
+  } else {
+    bi = 0;
   }
 
   const url = `${API_URL}/interruptionofdelivery/bi/${id}/${version}`;
@@ -414,6 +420,7 @@ export async function updateDDNInterruptionOfDeliveryBI(id, version, bi) {
   const payload = {
     bi: bi, // 1 ili 0
   };
+  
 
   try {
     const res = await apiFetch(url, {
@@ -482,5 +489,4 @@ export async function deleteDDNInterruptionOfDelivery(id, version) {
     throw error;
   }
 }
-
 

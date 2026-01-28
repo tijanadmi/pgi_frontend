@@ -20,24 +20,32 @@ const StyledConfirmDelete = styled.div`
   }
 `;
 
-function ConfirmDelete({ resourceName, onConfirm, disabled, onCloseModal }) {
+function ConfirmUpdateBI({ resourceName, onConfirm, disabled, onCloseModal }) {
   return (
     <StyledConfirmDelete>
-      <Heading as="h3">Брисање {resourceName}</Heading>
+      {/* <Heading as="h3">Измена {resourceName}</Heading> */}
       <p>
-        Да ли сте сигурни да хоћете да обришете {resourceName} заувек? Ова акција се не може поништити.
+        Да ли сте сигурни да хоћете да {resourceName} ? 
       </p>
 
       <div>
         <Button variation="secondary"  size="medium" disabled={disabled} onClick={onCloseModal}>
           Одустани
         </Button>
-        <Button variation="danger"  size="medium" disabled={disabled} onClick={onConfirm}>
-          Обриши
+        <Button
+          variation="danger"
+          size="medium"
+          disabled={disabled}
+          onClick={() => {
+            onConfirm();
+            onCloseModal(); // 👈 KLJUČNO
+          }}
+        >
+          Измени БИ
         </Button>
       </div>
     </StyledConfirmDelete>
   );
 }
 
-export default ConfirmDelete;
+export default ConfirmUpdateBI;
