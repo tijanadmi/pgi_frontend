@@ -17,10 +17,7 @@ function DDNInterruptionOfDeliveryP() {
         <AddIntOfDeliveryP />
       </Row>
       <Row>
-        {/* <AddIntOfDeliveryP /> */}
-        
         <IDPTable />
-        {/* <AddRestriction />     */}
       </Row>
     </>
   );

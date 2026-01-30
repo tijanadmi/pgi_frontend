@@ -19,7 +19,6 @@ function DDNInterruptionOfDeliveryK() {
 
       <Row>
         <IDKTable />
-        {/* <AddRestriction />     */}
       </Row>
     </>
   );

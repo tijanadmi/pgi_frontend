@@ -53,6 +53,7 @@ function CreateIntOfDeliveryKForm({ interruptionOfDeliveryKToEdit = {}, onCloseM
   "id_tipob",
   "vrepoc",
   "vrezav",
+  // "trajanje",
   "snaga",
   "opis",
   "id_s_vr_prek",

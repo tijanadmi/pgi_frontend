@@ -3,9 +3,12 @@ import styled from "styled-components";
 import MonthT1Row from "./MonthT1Row";
 import Table from "../../ui/Table";
 import Menus from "../../ui/Menus";
-// import { useSearchParams } from "react-router-dom";
+import Button from "../../ui/Button";
+import { useSearchParams } from "react-router-dom";
+import { getMonthStartEnd } from "../../utils/helpers";
 
 import { useListMonthT1 } from "./useListMonthT1";
+import { openPiMmPdfReport } from "../../services/apiReports";
 import Spinner from "../../ui/Spinner";
 import Pagination from "../../ui/Pagination";
 import Empty from "../../ui/Empty";
@@ -29,13 +32,27 @@ const Opis = styled.div`
 
 function MonthT1Table() {
   const { dogadjaji, isLoading, count } = useListMonthT1();
-  // const [searchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
 
   if (isLoading) return <Spinner />;
   // console.log("Mesecni T1:", dogadjaji);
   // console.log('count:', count);
   if (count === 0) return <Empty resourceName="месечни Т1" />;
 
+  const month = Number(searchParams.get("month"));
+  const year = Number(searchParams.get("year"));
+
+  const handlePdf = () => {
+    console.log("Usao u handlePdf Izvezi PDF za mesec:", month, "godina:", year);
+    const { firstDay, lastDay } = getMonthStartEnd(month, year);
+
+    openPiMmPdfReport({
+      startDate: firstDay,
+      endDate: lastDay,
+      tipd: "1",
+      komisija: "0",
+    });
+  };
   // 1) FILTER
   // const filterValue = searchParams.get("funp") || "all";
 
@@ -53,6 +70,10 @@ function MonthT1Table() {
   return (
     <Menus>
       <Table columns="0.4fr 0.4fr 0.4fr 1.6fr 1fr 2.5fr 2.5fr 1.2fr 1.2fr">
+        <Button variation="secondary" onClick={handlePdf}>
+          {/* <HiOutlineDocumentArrowDown /> */}
+          📄 Извези PDF
+        </Button>
         <Table.Header>
           {/* <StackedH>
             <span>Из</span>

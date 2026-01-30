@@ -40,9 +40,6 @@ const Stacked = styled.div`
 `;
 
 function IDKRow({pk}) {
-  //   const navigate = useNavigate();
-  //   const { checkout, isCheckingOut } = useCheckout();
-  //   const { deleteBooking, isDeleting } = useDeleteBooking();
 
   // console.log("prekidik u IDKRow:", id, vrepoc, ob_opis);
 
@@ -51,6 +48,7 @@ function IDKRow({pk}) {
     // mrc,
     vrepoc,
     vrezav,
+    trajanje,
     ob_opis,
     id_s_vr_prek,
     uzrok,
@@ -87,9 +85,9 @@ function IDKRow({pk}) {
         <span>{vrepoc}</span>
         <span>{vrezav}</span>
       </Stacked>
-      {/* <Stacked>
-        <span>{podvrsta_prek}</span>
-      </Stacked> */}
+      <Stacked>
+        <span>{trajanje}</span>
+      </Stacked>
 
       <Tag type={processedToTagName[pr]}>{pr.replace("-", " ")}</Tag>
 

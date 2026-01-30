@@ -18,12 +18,13 @@ const StackedH = styled.div`
 `;
 
 const Opis = styled.div`
+  grid-column: 1 / -1;  /* 🔥 KLJUČNO */
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
   color: var(--color-grey-500);
   font-size: 1.2rem;
-  margin-left: 10px; /* Dodaje levi margin */
+  margin-left: 20px; /* Dodaje levi margin */
   border-bottom: 1px solid var(--color-grey-300); /* Dodaje crtu ispod */
   padding-bottom: 4px; /* Razmak između teksta i crte */
 `;
@@ -43,7 +44,7 @@ function IDPTable() {
 
   return (
     <Menus>
-      <Table columns="1.2fr 1.2fr 1.5fr 1.2fr 1fr 2.5fr 1.2fr 1fr">
+      <Table columns="1.2fr 1.2fr 1.5fr 1.5fr 1.2fr 1fr 2.5fr 1.2fr 1fr">
         <Table.Header>
           <StackedH>
             <span>Производни</span>
@@ -55,6 +56,10 @@ function IDPTable() {
           <StackedH>
             <span>Почетак</span>
             <span>Крај прек.</span>
+          </StackedH>
+          <StackedH>
+            <span>Трајање</span>
+            <span>[DD:HH:MI]</span>
           </StackedH>
           <StackedH>
             <span>Врста пр.</span>
@@ -88,7 +93,7 @@ function IDPTable() {
           //
           render={(pp) => (
             <Fragment key={pp.id}>
-              <span></span>
+              
               <IDPRow key={pp.id} pp={pp} />
               <Opis>{pp.opis}</Opis>
             </Fragment>

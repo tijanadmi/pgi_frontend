@@ -18,6 +18,7 @@ const StackedH = styled.div`
 `;
 
 const Opis = styled.div`
+  grid-column: 1 / -1;  /* 🔥 KLJUČNO */
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
@@ -43,7 +44,7 @@ function IDKTable() {
 
   return (
     <Menus>
-      <Table columns="2fr 2fr 1.5fr 2fr 1.5fr 2.5fr 1.2fr 1fr">
+      <Table columns="2fr 2fr 1.5fr 1.5fr 2fr 1.5fr 2.5fr 1.2fr">
         <Table.Header>
           <StackedH>
             <span>Производни</span>
@@ -52,6 +53,10 @@ function IDKTable() {
           <StackedH>
             <span>Почетак</span>
             <span>Крај прек.</span>
+          </StackedH>
+          <StackedH>
+            <span>Трајање</span>
+            <span>[DD:HH:MI]</span>
           </StackedH>
           <StackedH>
             <span>Врста пр.</span>
@@ -78,6 +83,7 @@ function IDKTable() {
               </ExportExcelButton>
             )}
           </StackedH>
+
         </Table.Header>
 
         <Table.Body
@@ -85,7 +91,7 @@ function IDKTable() {
           //
           render={(pk) => (
             <Fragment key={pk.id}>
-              <span></span>
+              
               <IDKRow key={pk.id} pk={pk} />
               <Opis>{pk.opis}</Opis>
             </Fragment>

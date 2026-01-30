@@ -50,6 +50,7 @@ function IDPRow({pp}) {
     id: id,
     vrepoc,
     vrezav,
+    trajanje,
     ob_opis,
     polje_opis,
     id_s_vr_prek,
@@ -98,6 +99,9 @@ function IDPRow({pp}) {
         <span>{format(new Date(vrezav), "MMM dd yyyy")}</span> */}
         <span>{vrepoc}</span>
         <span>{vrezav}</span>
+      </Stacked>
+      <Stacked>
+        <span>{trajanje}</span>
       </Stacked>
       <Stacked>
         <span>{podvrsta_prek}</span>
