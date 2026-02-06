@@ -17,6 +17,9 @@ import CreateIntOfDeliveryKForm from "./CreateIntOfDeliveryKForm";
 import { useDeleteDDNInterruptionOfDeliveryK } from "./useDeleteDDNInterruptionOfDeliveryK";
 import { useEditDDNInterruptionOfDeliveryKBI } from "./useEditDDNInterruptionOfDeliveryKBI";
 
+import { useRole } from "../../features/authentication/useRole";
+
+
 const Room = styled.div`
   font-size: 1.6rem;
   font-weight: 600;
@@ -41,6 +44,9 @@ const Stacked = styled.div`
 
 function IDKRow({pk}) {
 
+  const { isBI,  isLoading } = useRole();
+
+  if (isLoading) return null;
   // console.log("prekidik u IDKRow:", id, vrepoc, ob_opis);
 
   const {
@@ -103,7 +109,7 @@ function IDKRow({pk}) {
         <span>{broj_mesta}</span>
       </Stacked>
 
-      <Modal>
+      {isBI && (<Modal>
                 <Menus.Menu>
                   <Menus.Toggle id={id} />
       
@@ -167,6 +173,7 @@ function IDKRow({pk}) {
                   </Modal.Window>
                 </Menus.Menu>
               </Modal>
+      )}
     </Table.Row>
   );
 }

@@ -17,6 +17,8 @@ import CreateIntOfDeliveryPForm from "./CreateIntOfDeliveryPForm";
 import { useDeleteDDNInterruptionOfDeliveryP } from "./useDeleteDDNInterruptionOfDeliveryP";
 import { useEditDDNInterruptionOfDeliveryBI } from "./useEditDDNInterruptionOfDeliveryBI";
 
+import { useRole } from "../../features/authentication/useRole";
+
 const Room = styled.div`
   font-size: 1.6rem;
   font-weight: 600;
@@ -45,6 +47,10 @@ const Stacked = styled.div`
 // `;
 
 function IDPRow({pp}) {
+
+   const { isBI,  isLoading } = useRole();
+
+  if (isLoading) return null;
 
   const {
     id: id,
@@ -121,7 +127,7 @@ function IDPRow({pp}) {
 
       {/* <Amount>{formatCurrency(total_price)}</Amount> */}
 
-      <Modal>
+      {isBI && (<Modal>
           <Menus.Menu>
             <Menus.Toggle id={id} />
 
@@ -187,6 +193,7 @@ function IDPRow({pp}) {
             </Modal.Window>
           </Menus.Menu>
         </Modal>
+      )}
     </Table.Row>
   );
 }

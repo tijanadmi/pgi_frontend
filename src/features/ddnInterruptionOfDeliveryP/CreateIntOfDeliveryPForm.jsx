@@ -331,7 +331,7 @@ useEffect(() => {
   <Controller
     name="p2_traf_id"
     control={control}
-    rules={{ required: "Поље је обавезно" }}
+    // rules={{ required: "Поље је обавезно" }}
     render={({ field }) => (
       <PoljaGESearchSelect
         obId={obId}                 // 👈 KLJUČNO

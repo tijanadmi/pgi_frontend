@@ -42,17 +42,7 @@ function MonthT1Table() {
   const month = Number(searchParams.get("month"));
   const year = Number(searchParams.get("year"));
 
-  const handlePdf = () => {
-    console.log("Usao u handlePdf Izvezi PDF za mesec:", month, "godina:", year);
-    const { firstDay, lastDay } = getMonthStartEnd(month, year);
-
-    openPiMmPdfReport({
-      startDate: firstDay,
-      endDate: lastDay,
-      tipd: "1",
-      komisija: "0",
-    });
-  };
+  
   // 1) FILTER
   // const filterValue = searchParams.get("funp") || "all";
 
@@ -70,10 +60,6 @@ function MonthT1Table() {
   return (
     <Menus>
       <Table columns="0.4fr 0.4fr 0.4fr 1.6fr 1fr 2.5fr 2.5fr 1.2fr 1.2fr">
-        <Button variation="secondary" onClick={handlePdf}>
-          {/* <HiOutlineDocumentArrowDown /> */}
-          📄 Извези PDF
-        </Button>
         <Table.Header>
           {/* <StackedH>
             <span>Из</span>

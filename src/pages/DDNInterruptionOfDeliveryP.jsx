@@ -5,7 +5,13 @@ import Row from "../ui/Row";
 import AddIntOfDeliveryP from "../features/ddnInterruptionOfDeliveryP/AddIntOfDeliveryP";
 // import AddRestriction from "../features/restrictions/AddRestriction";
 
+import { useRole } from "../features/authentication/useRole";
+
 function DDNInterruptionOfDeliveryP() {
+  const { isBI, isLoading } = useRole();
+
+  if (isLoading) return <div>Loading...</div>;
+
   return (
     <>
       <Row type="horizontal">
@@ -14,7 +20,7 @@ function DDNInterruptionOfDeliveryP() {
       </Row>
 
       <Row>
-        <AddIntOfDeliveryP />
+        {isBI && <AddIntOfDeliveryP />}
       </Row>
       <Row>
         <IDPTable />

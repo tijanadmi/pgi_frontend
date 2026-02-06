@@ -142,6 +142,15 @@ const variations = {
       background-color: var(--color-grey-50);
     }
   `,
+  pdf: css`
+    color: var(--color-green-700);
+    background-color: var(--color-green-100);
+    border: 1px solid var(--color-green-400);
+
+    &:hover {
+      background-color: var(--color-green-200);
+    }
+  `,
   danger: css`
     color: var(--color-red-100);
     background-color: var(--color-red-700);

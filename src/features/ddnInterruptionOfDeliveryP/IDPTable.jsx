@@ -44,7 +44,7 @@ function IDPTable() {
 
   return (
     <Menus>
-      <Table columns="1.2fr 1.2fr 1.5fr 1.5fr 1.2fr 1fr 2.5fr 1.2fr 1fr">
+      <Table columns="2fr 1.2fr 1.5fr 1.5fr 1.2fr 1fr 2.5fr 1.2fr 1fr">
         <Table.Header>
           <StackedH>
             <span>Производни</span>

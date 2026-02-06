@@ -5,7 +5,14 @@ import Heading from "../ui/Heading";
 import Row from "../ui/Row";
 // import AddRestriction from "../features/restrictions/AddRestriction";
 
+import { useRole } from "../features/authentication/useRole";
+
+
 function DDNInterruptionOfDeliveryK() {
+  const { isBI, isLoading } = useRole();
+
+  if (isLoading) return <div>Loading...</div>;
+
   return (
     <>
       <Row type="horizontal">
@@ -14,7 +21,7 @@ function DDNInterruptionOfDeliveryK() {
       </Row>
 
       <Row>
-        <AddIntOfDeliveryK />
+        {isBI && <AddIntOfDeliveryK />}
       </Row>
 
       <Row>

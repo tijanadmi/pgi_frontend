@@ -196,7 +196,7 @@ useEffect(() => {
      
 
        <ModalHeader
-    title={isEditSession ? "Измена прекида производње" : "Унос прекида производње"}
+    title={isEditSession ? "Измена прекида корисника" : "Унос прекида корисника"}
     
     onClick={() => onCloseModal?.()}
   />
@@ -289,7 +289,7 @@ useEffect(() => {
 </FormRowVertical>
 
 <FormRowVertical
-  label="Објекат (HE / TE / VE)"
+  label="Електроенергетски објекат"
   boldLabel
   span={2}
   error={errors?.ob_id?.message}

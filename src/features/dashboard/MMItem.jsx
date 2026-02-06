@@ -6,9 +6,12 @@ import Tag from "../../ui/Tag";
 // import { Flag } from "../../ui/Flag";
 import Button from "../../ui/Button";
 
+import { openPiMmPdfReport } from "../../services/apiReports";
+import { getMonthStartEnd } from "../../utils/helpers";
+
 const StyledTodayItem = styled.li`
   display: grid;
-  grid-template-columns: 18rem 5rem 9rem;
+  grid-template-columns: 18rem 5rem 9rem 9rem;
   gap: 1.2rem;
   align-items: center;
 
@@ -22,6 +25,25 @@ const StyledTodayItem = styled.li`
 `;
 
 function MMItem({ naziv, tacka, year, month }) {
+  const TIPD_MAP = {
+    t1: "1",
+    t2: "2",
+    t3: "3",
+    t4: "4",
+  };
+
+  const handlePdf = () => {
+    const { firstDay, lastDay } = getMonthStartEnd(month, year);
+
+    openPiMmPdfReport({
+      startDate: firstDay,
+      endDate: lastDay,
+      tipd: TIPD_MAP[naziv] ?? "%", // ili kako već mapiraš
+      komisija: "0",
+    });
+  };
+
+
   return (
     <StyledTodayItem>
       {/* <Guest>{naziv}</Guest> */}
@@ -38,6 +60,13 @@ function MMItem({ naziv, tacka, year, month }) {
         to={`/mesecni/${naziv}?month=${month}&year=${year}`}
       >
         Детаљи
+      </Button>
+      <Button
+        size="small"
+        variation="pdf"
+        onClick={handlePdf}
+      >
+        📄 PDF
       </Button>
     </StyledTodayItem>
   );

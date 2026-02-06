@@ -18,10 +18,18 @@ const GlobalStyles = createGlobalStyle`
 
   --color-blue-100: #e0f2fe;
   --color-blue-700: #0369a1;
-  --color-green-500: #22c55e;
-  --color-green-600: #16a34a;
-  --color-green-100: #dcfce7;
-  --color-green-700: #15803d;
+  /* Green – light mode */
+--color-green-50:  #f0fdf4;  /* vrlo svetla pozadina */
+--color-green-100: #dcfce7;  /* badge, light button bg */
+--color-green-200: #bbf7d0;  /* border / hover */
+--color-green-300: #86efac;  /* soft accent */
+--color-green-400: #4ade80;  /* accent */
+
+--color-green-500: #22c55e;  /* primary green (akcija) */
+--color-green-600: #16a34a;  /* hover / active */
+--color-green-700: #15803d;  /* text / strong */
+--color-green-800: #166534;  /* very strong text */
+--color-green-900: #052e16;  /* almost black green */
   --color-yellow-100: #fef9c3;
   --color-yellow-700: #a16207;
   --color-silver-100: #e5e7eb;
@@ -59,10 +67,17 @@ const GlobalStyles = createGlobalStyle`
 
 --color-blue-100: #075985;
 --color-blue-700: #e0f2fe;
---color-green-100: #166534;
---color-green-500: #4ade80;
---color-green-600: #22c55e;
---color-green-700: #dcfce7;
+--color-green-50:  #052e16;  
+--color-green-100: #dcfce7; 
+--color-green-200: #b4f3ca;  
+--color-green-300: #86efac;  
+--color-green-400: #4ade80;  
+
+--color-green-500: #22c55e;  
+--color-green-600: #16a34a;  
+--color-green-700: #15803d;  
+--color-green-800: #166534;  
+--color-green-900: #022c22;  
 --color-yellow-100: #854d0e;
 --color-yellow-700: #fef9c3;
 --color-silver-100: #374151;
