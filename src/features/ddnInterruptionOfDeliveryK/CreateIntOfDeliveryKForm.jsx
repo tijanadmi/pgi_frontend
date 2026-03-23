@@ -46,6 +46,7 @@ function CreateIntOfDeliveryKForm({ interruptionOfDeliveryKToEdit = {}, onCloseM
 
   const VRSTA_NEPLANIRAN_ID = 2;
   const UZROK_EMS_ID = 1;
+  const UZROK_VISA_SILA_ID = 4;
 
   const FORM_FIELDS = [
   "id_s_mrc",
@@ -135,6 +136,7 @@ useEffect(() => {
 
   const isNeplaniran = Number(vrstaPrekId) === VRSTA_NEPLANIRAN_ID;
   const isEMS = Number(uzrokPrekId) === UZROK_EMS_ID;
+  const isVisaSila = Number(uzrokPrekId) === UZROK_VISA_SILA_ID;
 
 
   function onSubmit(data) {
@@ -200,7 +202,7 @@ useEffect(() => {
     
     onClick={() => onCloseModal?.()}
   />
-      <FormColumn  columns={7} gap="1rem">
+      <FormColumn  columns={10} gap="1rem">
         
 {/* <FormRowVertical label="Време почетка" span={1} error={errors?.vrepoc?.message}>
   <Controller
@@ -231,9 +233,11 @@ useEffect(() => {
   />
 </FormRowVertical> */}
 
-<FieldGroup span={1}>
-  <FieldGroupLabel>Време прекида</FieldGroupLabel>
+
   <FormRowVertical
+  label="Време почетка"
+  boldLabel
+  span={2}
     error={errors?.vrepoc?.message}
   >
     <Controller
@@ -251,6 +255,9 @@ useEffect(() => {
   </FormRowVertical>
 
   <FormRowVertical
+  label="Време завршетка"
+  boldLabel
+  span={2}
     error={errors?.vrezav?.message}
   >
     <Controller
@@ -265,11 +272,11 @@ useEffect(() => {
       )}
     />
   </FormRowVertical>
-</FieldGroup>
 
 
 
-        <FormRowVertical label="РДЦ" boldLabel span={2} error={errors?.id_s_mrc?.message}>
+
+        <FormRowVertical label="РДЦ" boldLabel span={3} error={errors?.id_s_mrc?.message}>
   <Controller
     name="id_s_mrc"
     control={control}
@@ -291,7 +298,7 @@ useEffect(() => {
 <FormRowVertical
   label="Електроенергетски објекат"
   boldLabel
-  span={2}
+  span={3}
   error={errors?.ob_id?.message}
 >
   <Controller
@@ -390,13 +397,15 @@ useEffect(() => {
   control={control}
   rules={{
     validate: (value) =>
-      !isEMS || !!value || "Pодузрок је обавезан када је узрок EMS",
+      !(isEMS || isVisaSila) || !!value || 
+  "Подузрок је обавезан када је узрок ЕМС или Виша сила",
   }}
   render={({ field }) => (
     <PodUzrokPrekSearchSelect
       value={field.value} // ID
       onChange={field.onChange}
-      isDisabled={isCreating || !isNeplaniran || !isEMS}
+      isDisabled={isCreating || !isNeplaniran || (!isEMS && !isVisaSila)}
+      uzrokPrekId={uzrokPrekId}
     />
   )}
 />

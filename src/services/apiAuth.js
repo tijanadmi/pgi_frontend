@@ -32,12 +32,13 @@ export async function login({ email, password }) {
 
     const token = jsonResponse.access_token;
     const user = jsonResponse.user;
-    // console.log("Logged in user:", user);
+    //console.log("Logged in user:", user);
     // localStorage.setItem("token", token);
     // localStorage.setItem("user", user);
 
     const expiration = jsonResponse.access_token_expires_at;
     // localStorage.setItem("expiration", expiration);
+
 
     // Vrati user data
     return jsonResponse.user;
@@ -46,11 +47,6 @@ export async function login({ email, password }) {
     throw error;
   }
 }
-
-
-
-
-
 
 
 export async function getCurrentUser() {
@@ -75,7 +71,7 @@ export async function getCurrentUser() {
 
     // Parsirajte JSON odgovor
     const jsonResponse = await res.json();
-    // console.log('JSON Response from getCurrentUser:', jsonResponse);
+    console.log('JSON Response from getCurrentUser:', jsonResponse);
 
     const user = jsonResponse;
     // console.log("User fetched by token:", user);

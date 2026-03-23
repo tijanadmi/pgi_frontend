@@ -50,6 +50,20 @@ const GlobalStyles = createGlobalStyle`
 
     --image-grayscale: 0;
   --image-opacity: 100%;
+
+  /* Sidebar colors */
+--color-sidebar-bg: #0f2a44;
+--color-sidebar-hover: #163a5f;
+--color-sidebar-icon: #ffffff;
+
+/* Submenu colors */
+--color-submenu-bg: #f3f4f6;
+--color-submenu-text: #111827;
+--color-submenu-hover: #e5e7eb;
+
+/* Tooltip */
+--color-tooltip-bg: #0f2a44;
+--color-tooltip-text: #ffffff;
   }
   
   &.dark-mode {
@@ -98,6 +112,20 @@ const GlobalStyles = createGlobalStyle`
 
 --image-grayscale: 10%;
 --image-opacity: 90%;
+
+/* Sidebar dark */
+--color-sidebar-bg: #0b1f33;
+--color-sidebar-hover: #12314f;
+--color-sidebar-icon: #e5e7eb;
+
+/* Submenu dark */
+--color-submenu-bg: #1f2937;
+--color-submenu-text: #f3f4f6;
+--color-submenu-hover: #374151;
+
+/* Tooltip dark */
+--color-tooltip-bg: #0b1f33;
+--color-tooltip-text: #f3f4f6;
   }
   
   /* Indigo */

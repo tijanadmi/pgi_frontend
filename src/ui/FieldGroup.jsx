@@ -17,6 +17,9 @@ const FieldGroup = styled.div`
   gap: 0.8rem;
 
   grid-column: span ${(props) => props.span || 1};
+
+  /* VAŽNO – poravnava početak sa drugim grid itemima */
+  align-self: start;
 `;
 
 

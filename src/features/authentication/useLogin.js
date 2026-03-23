@@ -12,7 +12,17 @@ export function useLogin() {
     onSuccess: (user) => {
       //queryClient.setQueryData(['user'], user.user);
       queryClient.setQueryData(["user"], user);
-      navigate("/dashboard", { replace: true });
+        // console.log("Logged in user:", user);
+      // navigate("/dashboard", { replace: true });
+
+      const isDDN = user?.user_role?.includes("DDN");
+      const isMRC = user?.ddn?.TipPrivPrip === "MRC";
+
+      if (isDDN && isMRC) {
+        navigate("/dashboardDDN", { replace: true });
+      } else {
+        navigate("/dashboard", { replace: true });
+      }
     },
     onError: (err) => {
       console.log("ERROR", err);

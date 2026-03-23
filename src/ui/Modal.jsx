@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 import { HiXMark } from "react-icons/hi2";
 import styled from "styled-components";
 import { useOutsideClick } from "../hooks/useOutsideClick";
+
 // const StyledModalContent = styled.div`
 //   max-height: 80vh;
 //   overflow-y: auto;
@@ -82,12 +83,21 @@ function Open({ children, opens: opensWindowName }) {
 
 function Window({ children, name }) {
   const { openName, close } = useContext(ModalContext);
-  const ref = useOutsideClick(close);
+  // const ref = useOutsideClick(close);
 
   if (name !== openName) return null;
 
+  const handleOverlayClick = (e) => {
+    // Zatvaramo SAMO ako je klik direktno na overlay (ne na dete, ne na picker)
+    if (e.target === e.currentTarget) {
+      close();
+    }
+  };
+
+  const ref = useOutsideClick(close); // možeš zadržati za dodatnu sigurnost, ali više nije obavezno
+
   return createPortal(
-    <Overlay>
+    <Overlay onClick={handleOverlayClick}>
       <StyledModal ref={ref}>
         <Button onClick={close}>
           <HiXMark />

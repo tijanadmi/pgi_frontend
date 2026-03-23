@@ -46,6 +46,7 @@ function CreateIntOfDeliveryPForm({ interruptionOfDeliveryPToEdit = {}, onCloseM
 
   const VRSTA_NEPLANIRAN_ID = 2;
   const UZROK_EMS_ID = 1;
+  const UZROK_VISA_SILA_ID = 4;
 
   const FORM_FIELDS = [
   "id_s_mrc",
@@ -140,6 +141,7 @@ useEffect(() => {
 
   const isNeplaniran = Number(vrstaPrekId) === VRSTA_NEPLANIRAN_ID;
   const isEMS = Number(uzrokPrekId) === UZROK_EMS_ID;
+  const isVisaSila = Number(uzrokPrekId) === UZROK_VISA_SILA_ID;
 
 
   function onSubmit(data) {
@@ -421,13 +423,14 @@ useEffect(() => {
   control={control}
   rules={{
     validate: (value) =>
-      !isEMS || !!value || "Pодузрок је обавезан када је узрок EMS",
+      !isEMS || !isVisaSila || !!value || "Подузрок је обавезан када је узрок ЕМС или Виша сила",
   }}
   render={({ field }) => (
     <PodUzrokPrekSearchSelect
       value={field.value} // ID
       onChange={field.onChange}
-      isDisabled={isCreating || !isNeplaniran || !isEMS}
+      isDisabled={isCreating || !isNeplaniran || (!isEMS && !isVisaSila)}
+      uzrokPrekId={uzrokPrekId}
     />
   )}
 />

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import HeaderMenu from "./HeaderMenu";
 import UserAvatar from "../features/authentication/UserAvatar";
 
+
 const StyledHeader = styled.header`
   background-color: var(--color-grey-100);
   padding: 1.2rem 4.8rem;
@@ -13,9 +14,10 @@ const StyledHeader = styled.header`
   justify-content: flex-end;
 `;
 
-function Header() {
+function Header({ toggleSidebar }) {
   return (
     <StyledHeader>
+      
       <UserAvatar />
       <HeaderMenu />
     </StyledHeader>

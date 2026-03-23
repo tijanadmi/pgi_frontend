@@ -1,8 +1,20 @@
 import { usePodUzrokPrek } from "./usePodUzrokPrek";
 import SearchSelect from "../../ui/SearchSelect";
 
-function PodUzrokPrekSearchSelect({ value, onChange, isDisabled }) {
-  const { isLoading, poduzrokprek } = usePodUzrokPrek();
+function PodUzrokPrekSearchSelect({ value, onChange, isDisabled, uzrokPrekId }) {
+  const { isLoading, poduzrokprek } = usePodUzrokPrek(uzrokPrekId);
+
+   if (!uzrokPrekId) {
+    return (
+      <SearchSelect
+        options={[]}
+        value=""
+        onChange={() => {}}
+        isDisabled
+        placeholder="Прво изаберите узрок прекида"
+      />
+    );
+  }
 
   if (isLoading) return <p>Учитавање...</p>;
 
@@ -20,7 +32,7 @@ function PodUzrokPrekSearchSelect({ value, onChange, isDisabled }) {
       isDisabled={isDisabled}
       placeholder={
         isDisabled
-          ? "Узрок мора бити ЕМС"
+          ? "Узрок мора бити ЕМС или Виша сила"
           : "Изаберите подузрок прекида..."
       }
       isClearable

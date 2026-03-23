@@ -136,9 +136,11 @@ export async function getUzrokPrek() {
   }
 }
 
-export async function getPodUzrokPrek() {
+export async function getPodUzrokPrek(uzrokPrekId) {
+  if (!uzrokPrekId) return [];
+  // console.log("Fetching poduzroke prekida for uzrokPrekId:", uzrokPrekId);
   try {
-    const url = `${API_URL}/poduzrokprek`;
+    const url = `${API_URL}/poduzrokprek?id_uzrok_prek=${uzrokPrekId}`;
     const res = await apiFetch(url, {
           method: "GET",
           headers: {

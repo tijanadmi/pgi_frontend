@@ -1,0 +1,19 @@
+Dodatne biblioteke da Datepicker:
+npm install @mui/x-date-pickers @mui/material @date-io/date-fns date-fns
+
+dobila sam dosta gresaka u audit pa sam resavala sa:
+npm audit fix
+npm ls xlsx
+
+sa sajta https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz se skine fajl koji se stavi u root
+a u package.json se u delu  "dependencies": Doda
+"xlsx": "file:./xlsx-0.20.3.tgz"
+
+zatim se uradi: npm install
+
+mora rucno da se instalira i biblioteka
+npm install @emotion/react @emotion/styled
+
+instalacija nove biblioteke zbog DateTimePickera
+-----------------------------
+npm install @mui/icons-material @mui/material
