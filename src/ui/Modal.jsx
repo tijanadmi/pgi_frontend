@@ -83,7 +83,7 @@ function Open({ children, opens: opensWindowName }) {
 
 function Window({ children, name }) {
   const { openName, close } = useContext(ModalContext);
-  // const ref = useOutsideClick(close);
+  const ref = useOutsideClick(close);
 
   if (name !== openName) return null;
 
@@ -94,7 +94,7 @@ function Window({ children, name }) {
     }
   };
 
-  const ref = useOutsideClick(close); // možeš zadržati za dodatnu sigurnost, ali više nije obavezno
+  // const ref = useOutsideClick(close); // možeš zadržati za dodatnu sigurnost, ali više nije obavezno
 
   return createPortal(
     <Overlay onClick={handleOverlayClick}>

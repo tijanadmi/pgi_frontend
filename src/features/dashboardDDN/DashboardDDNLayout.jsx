@@ -49,7 +49,7 @@ import Spinner from "../../ui/Spinner";
 function DashboardDDNLayout() {
   const { isLoading, openShifts } = useOpenShifts();
 
-  console.log("openShifts iz DashboardDDNLayout", openShifts);
+  // console.log("openShifts iz DashboardDDNLayout", openShifts);
 
   if (isLoading) return <Spinner />;
   if (!openShifts.length) return <Empty resourceName="отворена смена" />;

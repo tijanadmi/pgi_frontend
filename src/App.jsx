@@ -41,6 +41,7 @@ import DashboardPI from "./pages/DashboardPI.jsx";
 import DashboardZastita from "./pages/DashboardZastita.jsx";
 import DashboardDDN from "./pages/DashboardDDN.jsx";
 
+
 // Create a client
 const queryClient = new QueryClient({
   defaultOptions: {

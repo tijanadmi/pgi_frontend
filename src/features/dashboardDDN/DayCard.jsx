@@ -2,9 +2,10 @@ import styled, { css } from "styled-components";
 import { HiOutlineUserGroup } from "react-icons/hi2";
 import { MdSunny, MdNightlight } from "react-icons/md";
 import { useState } from "react";
+import EventItem from "./EventItem";
 
 const Card = styled.div`
-  width: 28rem;
+  width: 32.5rem;
   border-radius: 12px;
   background: var(--color-grey-0);
   box-shadow: var(--shadow-md);
@@ -208,10 +209,8 @@ Object.entries(grouped).map(([tip, lista]) => {
       {isOpen && (
         <div style={{ marginLeft: "1.5rem", marginTop: "0.5rem" }}>
           {lista.map((d) => (
-            <div key={d.id} style={{ fontSize: "1.3rem" }}>
-              {d.rb_dog} - {d.naslov}
-            </div>
-          ))}
+            <EventItem key={d.id} id={d.id} rb={d.rb_dog} naslov={d.naslov} tip={d.tip} tip_obav={d.tip_obav} />
+        ))}
         </div>
       )}
     </div>

@@ -11,8 +11,8 @@ const Label = styled.label`
   font-size: 1.5rem;
   color: var(--color-grey-700);
 
-  ${({ bold }) =>
-    bold &&
+  ${({ $bold }) =>
+    $bold &&
     css`
       font-weight: 600;
       color: var(--color-grey-800);
@@ -24,13 +24,7 @@ const Error = styled.span`
   color: var(--color-red-700);
 `;
 
-// const InputWrapper = styled.div`
-//   min-height: ${({ noLabel }) =>
-//     noLabel ? 'calc(1.5rem * 1.5 + 1.6rem)' : 'auto'}; // prilagodi brojeve prema tvom dizajnu
-//   // noLabel ? '48px' : 'auto'}; // prilagodi brojeve prema tvom dizajnu
-//   display: flex;
-//   align-items: center;
-// `;
+
 
 const InputWrapper = styled.div`
   width: 100%;
@@ -51,7 +45,7 @@ const InputWrapper = styled.div`
 function FormRowVertical({ label, error, children, span = 1, boldLabel }) {
   return (
     <StyledFormRow $span={span}>
-      {label && <Label bold={boldLabel} htmlFor={children.props?.id}>{label}</Label>}
+      {label && <Label $bold={boldLabel} htmlFor={children?.props?.id || undefined}>{label}</Label>}
       <InputWrapper $noLabel={!label}>
         {children}
       </InputWrapper>

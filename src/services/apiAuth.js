@@ -71,7 +71,7 @@ export async function getCurrentUser() {
 
     // Parsirajte JSON odgovor
     const jsonResponse = await res.json();
-    console.log('JSON Response from getCurrentUser:', jsonResponse);
+    // console.log('JSON Response from getCurrentUser:', jsonResponse);
 
     const user = jsonResponse;
     // console.log("User fetched by token:", user);
