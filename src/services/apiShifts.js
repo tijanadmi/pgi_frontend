@@ -1,4 +1,5 @@
 import { apiFetch } from "../utils/auth";
+import { PAGE_SIZE } from "../utils/constants";
 
 const API_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -32,6 +33,62 @@ export async function getOpenShifts() {
   } catch (error) {
     // console.log("catch")
     console.error("Error fetching open shifts:", error.message);
+    throw error;
+  }
+}
+
+export async function getListClosedShiftsByPeriod(
+  firstDay,
+  lastDay,
+  mrcId,
+  page
+) {
+
+  if (!page) {
+    page = 1; // Podrazumevana stranica
+  }
+
+  if (!mrcId || mrcId === 9) {
+    mrcId = "all";
+  }
+
+  try {
+    const url = `${API_URL}/listclosedshiftsbypage?start_date=${firstDay}&end_date=${lastDay}&mrc=${mrcId}&page_size=${PAGE_SIZE}&page_id=${page}`;
+    const res = await apiFetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!res.ok) {
+      throw new Error("Failed getting all closed shifts by page");
+    }
+
+    // Parsirajte JSON odgovor
+    const jsonResponse = await res.json();
+
+    // Ako je odgovor prazan objekat {}, vrati prazan niz []
+    if (!jsonResponse || Object.keys(jsonResponse).length === 0) {
+      return {
+        data: [],
+        count: 0,
+      };
+    }
+
+    
+    const closedShifts = jsonResponse.smene || []; 
+    const total = jsonResponse.total ? parseInt(jsonResponse.total, 10) : 0;
+
+    // Vratite rezultat kao objekat
+    return {
+      data: closedShifts,
+      count: total, // Osiguranje da je broj
+    };
+
+  } catch (error) {
+    // console.log("catch")
+    console.error("Error fetching closed shifts by page:", error.message);
     throw error;
   }
 }

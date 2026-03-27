@@ -33,14 +33,21 @@ const NavList = styled.ul`
 
 
 
-const SubMenuItem = styled.a`
+
+const SubMenuItem = styled(NavLink)`
   padding: 0.6rem 1rem;
   font-size: 1.4rem;
   color: var(--color-grey-700);
   border-radius: var(--border-radius-sm);
+  text-decoration: none;
 
   &:hover {
     background: var(--color-grey-100);
+  }
+
+  &.active {
+    background: var(--color-grey-200);
+    font-weight: 500;
   }
 `;
 
@@ -53,9 +60,17 @@ function MainNav({ collapsed }) {
         <NavItem
           icon={<MdEventNote />}
           label="Диспетчерски дневник"
-          to="/dashboardDDN"
+          to="#"
           collapsed={collapsed}
-        />
+        >
+          <SubMenuItem to="/ddnopenshifts">
+            Отворене смене
+          </SubMenuItem>
+
+          <SubMenuItem to="/ddnclosedshifts">
+            Затворене смене
+          </SubMenuItem>
+        </NavItem>
         <NavItem
           icon={<MdCalendarMonth />}
           label="Месечни извештаји"
@@ -69,15 +84,6 @@ function MainNav({ collapsed }) {
           to="/dashboardday"
           collapsed={collapsed}
         />
-
-        {/* <NavItem
-          icon={<MdSyncProblem />}
-          label="Погонски извештаји"
-          collapsed={collapsed}
-        >
-          <SubMenuItem href="#">Тип A</SubMenuItem>
-          <SubMenuItem href="#">Тип B</SubMenuItem>
-        </NavItem> */}
 
         <NavItem
           icon={<MdSyncProblem />}
@@ -98,6 +104,7 @@ function MainNav({ collapsed }) {
           icon={<MdPowerOff />}
           label="Прекиди производње"
           to="/prekidip"
+          collapsed={collapsed}
         />
 
         <NavItem

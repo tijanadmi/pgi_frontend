@@ -3,7 +3,7 @@ import Heading from "../ui/Heading";
 import Row from "../ui/Row";
 import DashboardDDNLayout from "../features/dashboardDDN/DashboardDDNLayout";
 
-function DashboardDDN() {
+function DDNOpenShifts() {
   return (
     <>
       <Row type="horizontal">
@@ -16,4 +16,4 @@ function DashboardDDN() {
   );
 }
 
-export default DashboardDDN;
+export default DDNOpenShifts;

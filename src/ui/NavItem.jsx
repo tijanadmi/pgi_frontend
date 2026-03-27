@@ -1,4 +1,4 @@
-import React, { useState } from "react"; 
+import React, { useState, useEffect } from "react"; 
 import { useLocation, NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { HiChevronRight } from "react-icons/hi2";
@@ -29,7 +29,9 @@ const StyledNavLink = styled(NavLink)`
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
+  // justify-content: center;
+  justify-content: ${(props) =>
+    props.$collapsed ? "center" : "space-between"};
 
   &:link,
   &:visited {
@@ -76,6 +78,26 @@ const StyledNavLink = styled(NavLink)`
   &.active svg {
     color: var(--color-sidebar-icon);
   }
+
+  ${(props) =>
+  props.$active &&
+  `
+    background-color: var(--color-sidebar-hover);
+  `}
+
+  ${(props) =>
+  props.$active &&
+  `
+    svg {
+      color: var(--color-sidebar-icon);
+    }
+  `}
+
+  ${(props) =>
+  props.$active &&
+  `
+    border-left: 3px solid var(--color-brand-500);
+  `}
 `;
 
 const Item = styled.li`
@@ -87,11 +109,11 @@ const Item = styled.li`
 
   padding-right: 8px;
 
-  &:hover > ul {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateY(0);
-    }
+  // &:hover > ul {
+  //   opacity: 1;
+  //   pointer-events: auto;
+  //   transform: translateY(0);
+  //   }
 `;
 
 
@@ -115,10 +137,12 @@ const SubMenu = styled.ul`
 
   min-width: 16rem;
 
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(4px);
+  opacity: ${(props) => (props.$open ? "1" : "0")};
+  pointer-events: ${(props) => (props.$open ? "auto" : "none")};
+  transform: translateY(${(props) => (props.$open ? "0" : "4px")});
+
   transition: all 0.2s;
+
 `;
 
 const SubMenuHeader = styled.div`
@@ -132,6 +156,14 @@ const SubMenuHeader = styled.div`
   border-bottom: 1px solid var(--color-grey-300);
 `;
 
+const Arrow = styled(HiChevronRight)`
+  margin-left: auto;
+  transition: transform 0.2s;
+
+  transform: ${(props) =>
+    props.$open ? "rotate(90deg)" : "rotate(0deg)"};
+`;
+
 function NavItem({ icon, label, to, collapsed, children }) {
   const location = useLocation();
 
@@ -143,8 +175,18 @@ function NavItem({ icon, label, to, collapsed, children }) {
   const isAnySubActive =
     children &&
     React.Children.toArray(children).some(
-      (child) => child.props.href && location.pathname === child.props.href
+      // (child) => child.props.href && location.pathname === child.props.href
+      (child) => location.pathname === child.props.to
     );
+
+  // const isOpen = open || isAnySubActive;
+  const isOpen = open;
+
+  useEffect(() => {
+  if (isAnySubActive) {
+    setOpen(true);
+  }
+}, [isAnySubActive]);
 
   function handleClick(e) {
     if (hasSubmenu) {
@@ -153,51 +195,35 @@ function NavItem({ icon, label, to, collapsed, children }) {
     }
   }
 
-  return (
-    // <Item>
-    //   <StyledNavLink to={to || "#"} onClick={handleClick}>
-    //     {icon}
-    //     <Tooltip>{label}</Tooltip>
-    //  </StyledNavLink>
-    //  {hasSubmenu && 
-    //  <SubMenu>
-    //    <SubMenuHeader>{label}</SubMenuHeader>
-    //    {children}
-    //  </SubMenu>}
-    // </Item>
-    <Item className={isActive || isAnySubActive ? "active" : ""}>
-  {/* {hasSubmenu ? (
-    <StyledNavLink as="div" onClick={handleClick}>
-      {icon}
+
+return (
+  <Item>
+    <StyledNavLink
+      as={hasSubmenu ? "div" : NavLink}
+      to={!hasSubmenu ? to : undefined}
+      onClick={handleClick}
+      $collapsed={collapsed}
+      $active={isActive || isAnySubActive}
+    >
+      {/* {icon}
+      {!collapsed && <span>{label}</span>} */}
+      <div style={{ display: "flex", alignItems: "center", gap: "1.2rem" }}>
+        {icon}
+        {!collapsed && <span>{label}</span>}
+      </div>
+
+      {hasSubmenu && !collapsed && <Arrow $open={isOpen} />}
       <Tooltip>{label}</Tooltip>
     </StyledNavLink>
-  ) : (
-    <StyledNavLink to={to}>
-      {icon}
-      <Tooltip>{label}</Tooltip>
-    </StyledNavLink>
-  )} */}
 
-  {hasSubmenu ? (
-        <div onClick={handleClick} style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
-          {icon}
-          <Tooltip>{label}</Tooltip>
-        </div>
-      ) : (
-        <StyledNavLink to={to} end>
-          {icon}
-          <Tooltip>{label}</Tooltip>
-        </StyledNavLink>
-      )}
-
-  {hasSubmenu && (
-    <SubMenu>
-      <SubMenuHeader>{label}</SubMenuHeader>
-      {children}
-    </SubMenu>
-  )}
-</Item>
-  );
+    {hasSubmenu && (
+      <SubMenu $open={isOpen}>
+        <SubMenuHeader>{label}</SubMenuHeader>
+        {children}
+      </SubMenu>
+    )}
+  </Item>
+);
 }
 
 export default NavItem;

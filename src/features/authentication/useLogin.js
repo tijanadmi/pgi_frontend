@@ -19,7 +19,7 @@ export function useLogin() {
       const isMRC = user?.ddn?.TipPrivPrip === "MRC";
 
       if (isDDN && isMRC) {
-        navigate("/dashboardDDN", { replace: true });
+        navigate("/ddnopenshifts", { replace: true });
       } else {
         navigate("/dashboard", { replace: true });
       }

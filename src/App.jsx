@@ -39,7 +39,8 @@ import PIT4 from "./pages/PIT4.jsx";
 import DashboardDay from "./pages/DashboardDay.jsx";
 import DashboardPI from "./pages/DashboardPI.jsx";
 import DashboardZastita from "./pages/DashboardZastita.jsx";
-import DashboardDDN from "./pages/DashboardDDN.jsx";
+import DDNOpenShifts from "./pages/DDNOpenShifts.jsx";
+import DDNClosedShifts from "./pages/DDNClosedShifts.jsx";
 
 
 // Create a client
@@ -67,7 +68,8 @@ function App() {
               }
             >
               <Route index element={<Navigate replace to="dashboard" />} />
-              <Route path="dashboardDDN" element={<DashboardDDN />} />
+              <Route path="ddnopenshifts" element={<DDNOpenShifts />} />
+              <Route path="ddnclosedshifts" element={<DDNClosedShifts />} />
               <Route path="dashboard" element={<Dashboard />} />
               <Route path="dashboardday" element={<DashboardDay />} />
               <Route path="dashboardpogonski" element={<DashboardPI />} />
