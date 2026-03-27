@@ -59,7 +59,7 @@ function MainNav({ collapsed }) {
       <NavList>
         <NavItem
           icon={<MdEventNote />}
-          label="Диспетчерски дневник"
+          label="Диспечерски дневник"
           to="#"
           collapsed={collapsed}
         >

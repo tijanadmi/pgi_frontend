@@ -11,7 +11,7 @@ function DDNClosedShiftsLayout() {
   // console.log("closedShifts iz DDNClosedShiftsLayout", closedShifts);
 
   if (isLoading) return <Spinner />;
-  if (!closedShifts.length) return <Empty resourceName="отворена смена" />;
+  if (!closedShifts.length) return <Empty resourceName="затворена смена" />;
 
   return (
     <>
