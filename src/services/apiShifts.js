@@ -167,3 +167,189 @@ export async function getObavestenjeBeleskaById(dogId) {
   }
 }
 
+export async function getRadTKById(dogId) {
+
+// Provera da li je dogId validan
+  if (!dogId || isNaN(dogId)) {
+    console.error("Invalid dogId:", dogId);
+    return null; 
+  }
+
+  try {
+    const url = `${API_URL}/getradtk/${dogId}`;
+ 
+
+    const res = await apiFetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+
+    if (!res.ok) {
+      throw new Error(`Failed getting rad tk by ID ${dogId}`);
+    }
+
+    // Parsirajte JSON odgovor
+    const jsonResponse = await res.json();
+    // console.log("JSON Response from API:", jsonResponse);
+
+    return jsonResponse || [];
+
+  } catch (error) {
+    // console.log("catch")
+    console.error("Error fetching rad tk by ID:", error.message);
+    throw error;
+  }
+}
+
+export async function getRadTSUById(dogId) {
+
+// Provera da li je dogId validan
+  if (!dogId || isNaN(dogId)) {
+    console.error("Invalid dogId:", dogId);
+    return null; 
+  }
+
+  try {
+    const url = `${API_URL}/getradtsu/${dogId}`;
+ 
+
+    const res = await apiFetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+
+    if (!res.ok) {
+      throw new Error(`Failed getting rad tsu by ID ${dogId}`);
+    }
+
+    // Parsirajte JSON odgovor
+    const jsonResponse = await res.json();
+    // console.log("JSON Response from API:", jsonResponse);
+
+    return jsonResponse || [];
+
+  } catch (error) {
+    // console.log("catch")
+    console.error("Error fetching rad tsu by ID:", error.message);
+    throw error;
+  }
+}
+
+export async function getRadSOPById(dogId) {
+
+// Provera da li je dogId validan
+  if (!dogId || isNaN(dogId)) {
+    console.error("Invalid dogId:", dogId);
+    return null; 
+  }
+
+  try {
+    const url = `${API_URL}/getradsop/${dogId}`;
+ 
+
+    const res = await apiFetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+
+    if (!res.ok) {
+      throw new Error(`Failed getting rad sop by ID ${dogId}`);
+    }
+
+    // Parsirajte JSON odgovor
+    const jsonResponse = await res.json();
+    // console.log("JSON Response from API:", jsonResponse);
+
+    return jsonResponse || [];
+
+  } catch (error) {
+    // console.log("catch")
+    console.error("Error fetching rad sop by ID:", error.message);
+    throw error;
+  }
+}
+
+export async function getIspadById(dogId) {
+
+// Provera da li je dogId validan
+  if (!dogId || isNaN(dogId)) {
+    console.error("Invalid dogId:", dogId);
+    return null; 
+  }
+
+  try {
+    const url = `${API_URL}/getispad/${dogId}`;
+ 
+
+    const res = await apiFetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+
+    if (!res.ok) {
+      throw new Error(`Failed getting ispad by ID ${dogId}`);
+    }
+
+    // Parsirajte JSON odgovor
+    const jsonResponse = await res.json();
+    // console.log("JSON Response from API:", jsonResponse);
+
+    return jsonResponse || [];
+
+  } catch (error) {
+    // console.log("catch")
+    console.error("Error fetching ispad by ID:", error.message);
+    throw error;
+  }
+}
+
+export async function getPrekidPById(dogId) {
+  // console.error("Usao u getPrekidPById, dogId:", dogId);
+
+// Provera da li je dogId validan
+  if (!dogId || isNaN(dogId)) {
+    console.error("Invalid dogId:", dogId);
+    return null; 
+  }
+
+  try {
+    const url = `${API_URL}/getprekidp/${dogId}`;
+ 
+
+    const res = await apiFetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+
+    if (!res.ok) {
+      throw new Error(`Failed getting prekidp by ID ${dogId}`);
+    }
+
+    // Parsirajte JSON odgovor
+    const jsonResponse = await res.json();
+    // console.log("JSON Response from API:", jsonResponse);
+
+    return jsonResponse || [];
+
+  } catch (error) {
+    // console.log("catch")
+    console.error("Error fetching prekidp by ID:", error.message);
+    throw error;
+  }
+}
+
