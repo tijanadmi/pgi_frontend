@@ -52,7 +52,7 @@ function EventItem({ id, rb, naslov, tip, tip_obav }) {
   const isPrekidP = tip === "P"; 
 //   console.log("isBeleska =", isBeleska, "tip =", tip, "tip_obav =", tip_obav);
 
-console.log("Iskljucenje:", tip, isIspad, isIskljucenje,isPrekidP);
+// console.log("Iskljucenje:", tip, isIspad, isIskljucenje,isPrekidP);
 // console.log("ObavestenjeBeleska:", ObavestenjeBeleska);
 
   let content = null;
