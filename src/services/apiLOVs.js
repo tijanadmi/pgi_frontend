@@ -35,6 +35,31 @@ export async function getMrcs() {
   }
 }
 
+export async function getOrgs() {
+  try {
+    const url = `${API_URL}/org`;
+    const res = await apiFetch(url, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
+    if (!res.ok) {
+      throw new Error("Failed getting orgs");
+    }
+
+    // Parsirajte JSON odgovor
+    const jsonResponse = await res.json();
+
+    return jsonResponse || [];
+  } catch (error) {
+    // console.log("catch")
+    console.error("Error fetching orgs:", error.message);
+    throw error;
+  }
+}
+
 export async function getTipPrek() {
   try {
     const url = `${API_URL}/tipprek`;

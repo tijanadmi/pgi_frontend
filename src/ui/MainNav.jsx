@@ -16,7 +16,8 @@ import {
   MdToday,
   MdSyncProblem,
   MdPowerOff,
-  MdSecurity
+  MdSecurity,
+  MdSchema
  } from "react-icons/md";
 
 import { FaUserSlash } from "react-icons/fa";
@@ -111,6 +112,13 @@ function MainNav({ collapsed }) {
           icon={<MdSecurity />}
           label="Рад заштите"
           to="/dashboardzastita"
+          collapsed={collapsed}
+        />
+
+        <NavItem
+          icon={<MdSchema />}
+          label="ЈС/ДС шеме"
+          to="/jsdssheme"
           collapsed={collapsed}
         />
       </NavList>

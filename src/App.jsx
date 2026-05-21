@@ -42,6 +42,7 @@ import DashboardZastita from "./pages/DashboardZastita.jsx";
 import DDNOpenShifts from "./pages/DDNOpenShifts.jsx";
 import DDNClosedShifts from "./pages/DDNClosedShifts.jsx";
 
+import JSDSSheme from "./pages/JSDSSheme.jsx";
 
 // Create a client
 const queryClient = new QueryClient({
@@ -93,6 +94,8 @@ function App() {
 
               <Route path="prekidk" element={<DDNInterruptionOfDeliveryK />} />
               <Route path="prekidip" element={<DDNInterruptionOfDeliveryP />} />
+
+              <Route path="jsdssheme" element={<JSDSSheme />} />
               <Route path="account" element={<Account />} />
             </Route>
 
