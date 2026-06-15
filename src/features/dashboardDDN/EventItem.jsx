@@ -10,6 +10,7 @@ import RadTSU from "./RadTSU";
 import RadSOP from "./RadSOP";
 import Ispad from "./Ispad";
 import PrekidP from "./PrekidP";
+import ObavestenjeSlike from "./ObavestenjeSlike";
 
 const EventWrapper = styled.div`
   font-size: 1.3rem;
@@ -46,6 +47,7 @@ function EventItem({ id, rb, naslov, tip, tip_obav }) {
   const isIskljucenje = tip === "2" || tip === 2;
   const isIspad = tip === "1" || tip === 1;
   const isBeleska = tip === "O" && tip_obav=== "B";
+  const isSlika = tip === "O" && tip_obav=== "F";
   const isRadTSU = tip === "5" || tip === 5; 
   const isRadSOP = tip === "A"; 
   const isRadTK = tip === "6" || tip === 6; 
@@ -71,7 +73,9 @@ function EventItem({ id, rb, naslov, tip, tip_obav }) {
     content = <Ispad dogId={id} />;
   } else if (isPrekidP) {
     content = <PrekidP dogId={id} />;
-  } 
+  } else if (isSlika) {
+    content = <ObavestenjeSlike dogId={id} />;
+  }
   // ako nema content → običan prikaz
   if (!content) {
     return (
@@ -91,7 +95,10 @@ function EventItem({ id, rb, naslov, tip, tip_obav }) {
         </EventWrapper>
       </Modal.Open>
 
-      <Modal.Window name={`event-${id}`}>
+      <Modal.Window 
+        name={`event-${id}`}
+        fullscreen={isSlika}
+      >
         {content}
       </Modal.Window>
     </Modal>

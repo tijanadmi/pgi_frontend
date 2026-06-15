@@ -13,26 +13,48 @@ const Card = styled.div`
 `;
 
 
+// const Header = styled.div`
+//   padding: 1rem 1.6rem;
+
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-between;
+
+//   font-weight: 500;
+
+//   ${(props) =>
+//     props.$isDay
+//       ? css`
+//           background: white;
+//           color: var(--color-grey-800);
+//           border-bottom: 1px solid var(--color-grey-200);
+//         `
+//       : css`
+//           background: #0f2a44;
+//           color: white;
+//         `}
+// `;
+
 const Header = styled.div`
   padding: 1rem 1.6rem;
 
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
 
   font-weight: 500;
 
-  ${(props) =>
+  background: ${(props) =>
     props.$isDay
-      ? css`
-          background: white;
-          color: var(--color-grey-800);
-          border-bottom: 1px solid var(--color-grey-200);
-        `
-      : css`
-          background: #0f2a44;
-          color: white;
-        `}
+      ? "var(--shift-day-bg)"
+      : "var(--shift-night-bg)"};
+
+  color: ${(props) =>
+    props.$isDay
+      ? "var(--shift-day-text)"
+      : "var(--shift-night-text)"};
+
+  border-bottom: 1px solid var(--color-grey-200);
 `;
 
 const HeaderLeft = styled.div`

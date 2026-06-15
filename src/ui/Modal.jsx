@@ -13,11 +13,26 @@ const StyledModal = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+
   background-color: var(--color-grey-0);
   border-radius: var(--border-radius-lg);
   box-shadow: var(--shadow-lg);
+
+  // padding: 3.2rem 4rem;
+  // transition: all 0.5s;
+  // padding: ${(props) => (props.$fullscreen ? "0" : "3.2rem 4rem")};
+
+  width: ${(props) => (props.$fullscreen ? "85vw" : "auto")};
+  height: ${(props) => (props.$fullscreen ? "100vh" : "auto")};
+
+  maxWidth: "100%",
+  maxHeight: "100%",
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   padding: 3.2rem 4rem;
-  transition: all 0.5s;
 `;
 
 const Overlay = styled.div`
@@ -81,7 +96,7 @@ function Open({ children, opens: opensWindowName }) {
   return cloneElement(children, { onClick: () => open(opensWindowName) });
 }
 
-function Window({ children, name }) {
+function Window({ children, name, fullscreen = false }) {
   const { openName, close } = useContext(ModalContext);
   const ref = useOutsideClick(close);
 
@@ -98,7 +113,7 @@ function Window({ children, name }) {
 
   return createPortal(
     <Overlay onClick={handleOverlayClick}>
-      <StyledModal ref={ref}>
+      <StyledModal $fullscreen={fullscreen} ref={ref}>
         <Button onClick={close}>
           <HiXMark />
         </Button>

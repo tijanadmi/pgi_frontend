@@ -54,10 +54,15 @@ function LoginForm() {
           // onInput={(e) => e.target.setCustomValidity("")} // Resetuje poruku kad korisnik počne da kuca
         />
       </FormRowVertical>
+      <FormRowVertical >
+        
+      </FormRowVertical>
       <FormRowVertical>
-        <Button size="large" disabled={isLoading}>
-          {!isLoading ? "Улогуј се..." : <SpinnerMini />}
-        </Button>
+        <div style={{ marginTop: "1.6rem" , width: "100%" }}>
+          <Button size="large" disabled={isLoading} style={{ width: "100%" }}>
+            {!isLoading ? "Пријави се..." : <SpinnerMini />}
+          </Button>
+        </div>
       </FormRowVertical>
     </Form>
   );

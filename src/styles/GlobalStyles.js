@@ -64,6 +64,13 @@ const GlobalStyles = createGlobalStyle`
 /* Tooltip */
 --color-tooltip-bg: #0f2a44;
 --color-tooltip-text: #ffffff;
+
+/* Za dnevne i nocne smene */
+--shift-day-bg: #ffffff;
+--shift-day-text: #1f2937;
+
+--shift-night-bg: #0f2a44;
+--shift-night-text: #ffffff;
   }
   
   &.dark-mode {
@@ -126,6 +133,13 @@ const GlobalStyles = createGlobalStyle`
 /* Tooltip dark */
 --color-tooltip-bg: #0b1f33;
 --color-tooltip-text: #f3f4f6;
+
+/* za dnevne i nocne smene */
+ --shift-day-bg: #f3f4f6;   /* i dalje svetlo */
+  --shift-day-text: #111827;
+
+  --shift-night-bg: #0b1f33; /* ostaje dark */
+  --shift-night-text: #f9fafb;
   }
   
   /* Indigo */

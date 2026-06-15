@@ -353,3 +353,33 @@ export async function getPrekidPById(dogId) {
   }
 }
 
+export async function getObavSlikeByDogId(dogId) {
+  // Validacija ID-ja
+  if (!dogId || isNaN(dogId)) {
+    console.error("Invalid dogId:", dogId);
+    return null;
+  }
+
+  try {
+    const url = `${API_URL}/dogadjaji/${dogId}/slike`;
+
+    const res = await apiFetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!res.ok) {
+      throw new Error(`Failed getting slike for dogadjaj ID ${dogId}`);
+    }
+
+    const jsonResponse = await res.json();
+
+    return jsonResponse?.images || [];
+
+  } catch (error) {
+    console.error("Error fetching slike for dogadjaj:", error.message);
+    throw error;
+  }
+}
