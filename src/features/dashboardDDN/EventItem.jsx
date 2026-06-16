@@ -11,6 +11,7 @@ import RadSOP from "./RadSOP";
 import Ispad from "./Ispad";
 import PrekidP from "./PrekidP";
 import ObavestenjeSlike from "./ObavestenjeSlike";
+import AngazovaniRukovaoci from "./AngazovaniRukovaoci"; 
 
 const EventWrapper = styled.div`
   font-size: 1.3rem;
@@ -45,13 +46,14 @@ const Naslov = styled.span`
 
 function EventItem({ id, rb, naslov, tip, tip_obav }) {
   const isIskljucenje = tip === "2" || tip === 2;
-  const isIspad = tip === "1" || tip === 1;
+  const isIspad = tip === "1" || tip === 1 || tip === 7 || tip === "7";
   const isBeleska = tip === "O" && tip_obav=== "B";
   const isSlika = tip === "O" && tip_obav=== "F";
   const isRadTSU = tip === "5" || tip === 5; 
   const isRadSOP = tip === "A"; 
   const isRadTK = tip === "6" || tip === 6; 
   const isPrekidP = tip === "P"; 
+  const isAngazovaniRuk = tip === "D";
 //   console.log("isBeleska =", isBeleska, "tip =", tip, "tip_obav =", tip_obav);
 
 // console.log("Iskljucenje:", tip, isIspad, isIskljucenje,isPrekidP);
@@ -75,7 +77,10 @@ function EventItem({ id, rb, naslov, tip, tip_obav }) {
     content = <PrekidP dogId={id} />;
   } else if (isSlika) {
     content = <ObavestenjeSlike dogId={id} />;
+  } else if (isAngazovaniRuk) {
+    content = <AngazovaniRukovaoci dogId={id} />;
   }
+
   // ako nema content → običan prikaz
   if (!content) {
     return (

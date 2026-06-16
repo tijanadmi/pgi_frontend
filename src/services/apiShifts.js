@@ -383,3 +383,38 @@ export async function getObavSlikeByDogId(dogId) {
     throw error;
   }
 }
+
+export async function getAngazovaniRukById(dogId) {
+  // Provera da li je dogId validan
+  if (!dogId || isNaN(dogId)) {
+    console.error("Invalid dogId:", dogId);
+    return null;
+  }
+
+  try {
+    const url = `${API_URL}/getangazovaniukovaoci/${dogId}`;
+
+    const res = await apiFetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!res.ok) {
+      throw new Error(
+        `Failed getting angazovani rukovaoci by ID ${dogId}`
+      );
+    }
+
+    const jsonResponse = await res.json();
+
+    return jsonResponse || {};
+  } catch (error) {
+    console.error(
+      "Error fetching angazovani rukovaoci by ID:",
+      error.message
+    );
+    throw error;
+  }
+}
