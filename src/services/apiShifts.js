@@ -24,9 +24,12 @@ export async function getOpenShifts() {
       throw new Error("Failed getting all open shifts");
     }
 
+
     // Parsirajte JSON odgovor
     const jsonResponse = await res.json();
     // console.log("JSON Response from API:", jsonResponse);
+
+    console.log("JSON Response from API:", jsonResponse);
 
     return  jsonResponse.data || jsonResponse || []; // Vraća data polje ili ceo odgovor ili prazan niz;
 

@@ -3,6 +3,9 @@ import { HiOutlineUserGroup } from "react-icons/hi2";
 import { MdSunny, MdNightlight } from "react-icons/md";
 import { useState } from "react";
 import EventItem from "./EventItem";
+import IconAction from "../../ui/IconAction";
+import Modal from "../../ui/Modal";
+import ShiftComment from "./ShiftComment";
 
 const Card = styled.div`
   width: 32.5rem;
@@ -242,13 +245,22 @@ Object.entries(grouped).map(([tip, lista]) => {
       </Body>
 
       <Footer>
-        <IconGroup>
-          {/* <span>⟳</span>
-          <span>📊</span> */}
-          <span>🧾</span>
-          {/* <span>↔</span>
-          <span>🖨</span> */}
-        </IconGroup>
+        <Modal>
+          <IconGroup>
+            {/* <span>⟳</span>
+            <span>📊</span> */}
+            <Modal.Open opens="shift-comment">
+              {/* <span style={{ cursor: "pointer" }}>🧾</span> */}
+              <IconAction icon="🧾" tooltip="Коментар за смену" />
+            </Modal.Open>
+            {/* <span>↔</span>
+            <span>🖨</span> */}
+          </IconGroup>
+
+          <Modal.Window name="shift-comment">
+            <ShiftComment shiftData={shiftData} />
+          </Modal.Window>
+        </Modal>
       </Footer>
     </Card>
   );
