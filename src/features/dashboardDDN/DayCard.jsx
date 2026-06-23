@@ -6,6 +6,7 @@ import EventItem from "./EventItem";
 import IconAction from "../../ui/IconAction";
 import Modal from "../../ui/Modal";
 import ShiftComment from "./ShiftComment";
+import { openSmenaPdfReport } from "../../services/apiReports";
 
 const Card = styled.div`
   width: 32.5rem;
@@ -16,27 +17,6 @@ const Card = styled.div`
 `;
 
 
-// const Header = styled.div`
-//   padding: 1rem 1.6rem;
-
-//   display: flex;
-//   align-items: center;
-//   justify-content: space-between;
-
-//   font-weight: 500;
-
-//   ${(props) =>
-//     props.$isDay
-//       ? css`
-//           background: white;
-//           color: var(--color-grey-800);
-//           border-bottom: 1px solid var(--color-grey-200);
-//         `
-//       : css`
-//           background: #0f2a44;
-//           color: white;
-//         `}
-// `;
 
 const Header = styled.div`
   padding: 1rem 1.6rem;
@@ -152,6 +132,7 @@ function groupByType(dogadjaji) {
 
 function DayCard({ shiftData }) {
   const {
+    id_smene,
     dat_dnev,
     id_tip_smena,
     int_smena,
@@ -251,10 +232,10 @@ Object.entries(grouped).map(([tip, lista]) => {
             <span>📊</span> */}
             <Modal.Open opens="shift-comment">
               {/* <span style={{ cursor: "pointer" }}>🧾</span> */}
-              <IconAction icon="🧾" tooltip="Коментар за смену" />
+              <IconAction icon="🧾" tooltip="Коментар за смену"/>
             </Modal.Open>
-            {/* <span>↔</span>
-            <span>🖨</span> */}
+            {/* <span>↔</span> */}
+            <IconAction icon="🖨" tooltip="Штампа смене" onClick={() => openSmenaPdfReport({ idSmena: shiftData.id_smene })} />
           </IconGroup>
 
           <Modal.Window name="shift-comment">

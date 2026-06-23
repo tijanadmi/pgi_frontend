@@ -30,7 +30,7 @@ const Tooltip = styled.div`
   transform: translate(-50%, -120%);
 `;
 
-function IconAction({ icon, tooltip }) {
+function IconAction({ icon, tooltip, ...props })  {
   const [coords, setCoords] = useState(null);
 
   function handleEnter(e) {
@@ -48,7 +48,11 @@ function IconAction({ icon, tooltip }) {
 
   return (
     <>
-      <Button onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
+      <Button
+        {...props}
+        onMouseEnter={handleEnter}
+        onMouseLeave={handleLeave}
+      >
         {icon}
       </Button>
 

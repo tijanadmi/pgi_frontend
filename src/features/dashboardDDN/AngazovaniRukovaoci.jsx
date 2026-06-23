@@ -50,7 +50,7 @@ function AngazovaniRukovaoci({ dogId }) {
         </div>
 
         <div>
-          <strong>Nalog izdao:</strong> {ime_naloga}
+          <strong>Nalog izdat:</strong> {ime_naloga}
         </div>
 
         <div>

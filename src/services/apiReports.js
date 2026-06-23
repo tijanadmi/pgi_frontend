@@ -14,3 +14,11 @@ export function openPiMmPdfReport({ startDate, endDate, tipd, komisija }) {
   // PDF se samo otvara – ne fetch, ne react-query
   window.open(url, "_blank");
 }
+
+
+export function openSmenaPdfReport({ idSmena }) {
+    
+  const url = `${API_URL}/reports/smena/${idSmena}/pdf`;
+
+  window.open(url, "_blank");
+}
